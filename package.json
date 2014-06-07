@@ -1,0 +1,20 @@
+{
+  "name": "byte-size",
+  "author": "Lloyd Brookes <75pound@gmail.com>",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "https://github.com/75lb/byte-size.git",
+  "main": "./lib/byte-size.js",
+  "keywords": [],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "tape test/*.js",
+    "lint": "jshint lib/*.js bin/*.js test/*.js; echo",
+    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
+  },
+  "devDependencies": {
+    "tape": "^2.13.2"
+  }
+}
