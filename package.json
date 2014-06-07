@@ -2,16 +2,13 @@
   "name": "byte-size",
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "0.0.0",
-  "description": "",
+  "description": "Convert a value in bytes to a more human-readable size.",
   "repository": "https://github.com/75lb/byte-size.git",
   "main": "./lib/byte-size.js",
-  "keywords": [],
-  "engines": {
-    "node": ">=0.10.0"
-  },
+  "keywords": [ "convert", "bytes", "size", "human", "readable" ],
   "scripts": {
     "test": "tape test/*.js",
-    "lint": "jshint lib/*.js bin/*.js test/*.js; echo",
+    "lint": "jshint lib/*.js test/*.js; echo",
     "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
   },
   "devDependencies": {
