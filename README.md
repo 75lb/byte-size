@@ -31,6 +31,15 @@ Convert a value in bytes to a more human-readable size.
 
 > byteSize(10000, 3)
 '9.766 KB'
+
+> byteSize(1234000, 2)
+'1.18 MB'
+
+> byteSize(32432434000, 2)
+'30.21 GB'
+
+> byteSize(324324342354360, 2)
+'294.97 TB'
 ```
 
 * * *

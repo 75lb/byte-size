@@ -1,5 +1,5 @@
 var test = require("tape");
-var lib = require("../lib/byte-size");
+var lib = require("../");
 
 test("first", function(t){
     t.equal(lib(10000), "10 KB");
