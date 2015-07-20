@@ -4,24 +4,31 @@
 [![Dependency Status](https://david-dm.org/75lb/byte-size.svg)](https://david-dm.org/75lb/byte-size)
 
 <a name="module_byte-size"></a>
-## byte-size ⇒ <code>string</code>
+## byte-size
 Convert a value in bytes to a more human-readable size.
 
+<a name="exp_module_byte-size--byteSize"></a>
+### byteSize(bytes, [precision]) ⇒ <code>string</code> ⏏
+**Kind**: Exported function  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-|  | <code>number</code> |  | the bytes value to convert |
+| bytes | <code>number</code> |  | the bytes value to convert |
 | [precision] | <code>number</code> | <code>0</code> | number of decimal places |
 
 **Example**  
 ```js
-var byteSize = require("byte-size");
+> var byteSize = require("byte-size");
+
 > byteSize(10000)
 '10 KB'
+
 > byteSize(10000, 1)
 '9.8 KB'
+
 > byteSize(10000, 2)
 '9.77 KB'
+
 > byteSize(10000, 3)
 '9.766 KB'
 ```
