@@ -1,12 +1,15 @@
 {
   "name": "byte-size",
   "author": "Lloyd Brookes <75pound@gmail.com>",
-  "contributors": [{
-    "name": "Raul Perez",
-    "email": "repejota@gmail.com",
-    "url": "http://repejota.com"
-  }],
+  "contributors": [
+    {
+      "name": "Raul Perez",
+      "email": "repejota@gmail.com",
+      "url": "http://repejota.com"
+    }
+  ],
   "version": "0.1.0",
+  "license": "MIT",
   "description": "Convert a value in bytes to a more human-readable size.",
   "repository": "https://github.com/75lb/byte-size.git",
   "main": "./lib/byte-size.js",
@@ -19,10 +22,10 @@
   ],
   "scripts": {
     "test": "tape test/*.js",
-    "lint": "jshint lib/*.js test/*.js; echo",
     "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
   },
   "devDependencies": {
-    "tape": "^2.13.2"
+    "jsdoc-to-markdown": "^1.1.1",
+    "tape": "^4"
   }
 }
