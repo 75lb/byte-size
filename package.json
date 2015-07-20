@@ -1,6 +1,11 @@
 {
   "name": "byte-size",
   "author": "Lloyd Brookes <75pound@gmail.com>",
+  "contributors": [{
+    "name": "Raul Perez",
+    "email": "repejota@gmail.com",
+    "url": "http://repejota.com"
+  }],
   "version": "0.1.0",
   "description": "Convert a value in bytes to a more human-readable size.",
   "repository": "https://github.com/75lb/byte-size.git",
