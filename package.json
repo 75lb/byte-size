@@ -10,7 +10,7 @@
   ],
   "version": "1.0.1",
   "license": "MIT",
-  "description": "Convert a bytes value to a more human-readable format.",
+  "description": "Convert a bytes value to a more human-readable format. Choose between metric or IEC units.",
   "repository": "https://github.com/75lb/byte-size.git",
   "main": "./lib/byte-size.js",
   "keywords": [
