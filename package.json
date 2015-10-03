@@ -10,7 +10,7 @@
   ],
   "version": "1.0.1",
   "license": "MIT",
-  "description": "Convert a value in bytes to a more human-readable size.",
+  "description": "Convert a bytes value to a more human-readable format.",
   "repository": "https://github.com/75lb/byte-size.git",
   "main": "./lib/byte-size.js",
   "keywords": [
@@ -18,7 +18,9 @@
     "bytes",
     "size",
     "human",
-    "readable"
+    "readable",
+    "metric", 
+    "IEC"
   ],
   "scripts": {
     "test": "tape test/*.js",

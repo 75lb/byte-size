@@ -2,10 +2,11 @@
 [![npm module downloads per month](http://img.shields.io/npm/dm/byte-size.svg)](https://www.npmjs.org/package/byte-size)
 [![Build Status](https://travis-ci.org/75lb/byte-size.svg?branch=master)](https://travis-ci.org/75lb/byte-size)
 [![Dependency Status](https://david-dm.org/75lb/byte-size.svg)](https://david-dm.org/75lb/byte-size)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 <a name="module_byte-size"></a>
 ## byte-size
-Convert a value in bytes to a more human-readable size.
+Convert a bytes value to a more human-readable format.
 
 <a name="exp_module_byte-size--byteSize"></a>
 ### byteSize(bytes, [precision]) ⇒ <code>string</code> ⏏
@@ -18,7 +19,7 @@ Convert a value in bytes to a more human-readable size.
 
 **Example**  
 ```js
-> var byteSize = require("byte-size");
+> var byteSize = require("byte-size")
 
 > byteSize(10000)
 '10 KB'
