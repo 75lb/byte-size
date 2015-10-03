@@ -15,7 +15,7 @@ test('metric', function (t) {
 })
 
 test('iec', function (t) {
-  var options = { unit: 'iec' }
+  var options = { units: 'iec' }
   t.equal(byteSize(1000, options), '1000 B')
   t.equal(byteSize(10000, options), '9.8 KiB')
   t.equal(byteSize(34565346, options), '33.0 MiB')

@@ -9,38 +9,31 @@
 Convert a bytes value to a more human-readable format.
 
 <a name="exp_module_byte-size--byteSize"></a>
-### byteSize(bytes, [precision]) ⇒ <code>string</code> ⏏
+### byteSize(bytes, [options]) ⇒ <code>string</code> ⏏
 **Kind**: Exported function  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | bytes | <code>number</code> |  | the bytes value to convert |
-| [precision] | <code>number</code> | <code>0</code> | number of decimal places |
+| [options] | <code>object</code> |  | optional config |
+| [options.precision] | <code>number</code> | <code>1</code> | number of decimal places |
+| [options.units] | <code>string</code> | <code>&quot;metric&quot;</code> | select `'metric'` or `'iec'` units |
 
 **Example**  
 ```js
 > var byteSize = require("byte-size")
 
-> byteSize(10000)
-'10 KB'
+> byteSize(1580)
+'1.6 kB'
 
-> byteSize(10000, 1)
-'9.8 KB'
+> byteSize(1580, { units: 'iec' })
+'1.5 KiB'
 
-> byteSize(10000, 2)
-'9.77 KB'
+> byteSize(1580, { units: 'iec', precision: 3 })
+'1.543 KiB'
 
-> byteSize(10000, 3)
-'9.766 KB'
-
-> byteSize(1234000, 2)
-'1.18 MB'
-
-> byteSize(32432434000, 2)
-'30.21 GB'
-
-> byteSize(324324342354360, 2)
-'294.97 TB'
+> byteSize(1580, { units: 'iec', precision: 0 })
+'2 KiB'
 ```
 
 * * *
