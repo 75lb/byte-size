@@ -29,6 +29,35 @@ test('iec', function (t) {
   t.end()
 })
 
+test('metric_octet', function (t) {
+  var options = { units: 'metric_octet' }
+  t.equal(byteSize(1000, options), '1.0 ko')
+  t.equal(byteSize(10000, options), '10.0 ko')
+  t.equal(byteSize(34565346, options), '34.6 Mo')
+  t.equal(byteSize(56356534635465, options), '56.4 To')
+  t.equal(byteSize(42436356534635465, options), '42.4 Po')
+  t.equal(byteSize(5342436356534635465, options), '5.3 Eo')
+  t.equal(byteSize(234235342436356534635465, options), '234.2 Zo')
+  t.equal(byteSize(345234235342436356534635465, options), '345.2 Yo')
+  t.equal(byteSize(3234545234235342436356534635465, options), 3.2345452342353426e+30)
+  t.end()
+})
+
+test('iec_octet', function (t) {
+  var options = { units: 'iec_octet' }
+  t.equal(byteSize(1000, options), '1000 o')
+  t.equal(byteSize(10000, options), '9.8 Kio')
+  t.equal(byteSize(34565346, options), '33.0 Mio')
+  t.equal(byteSize(56356534635465, options), '51.3 Tio')
+  t.equal(byteSize(42436356534635465, options), '37.7 Pio')
+  t.equal(byteSize(5342436356534635465, options), '4.6 Eio')
+  t.equal(byteSize(234235342436356534635465, options), '198.4 Zio')
+  t.equal(byteSize(345234235342436356534635465, options), '285.6 Yio')
+  t.equal(byteSize(3234545234235342436356534635465, options), 3.2345452342353426e+30)
+  t.equal(byteSize(9873234545234235342436356534635465, options), 9.873234545234235e+33)
+  t.end()
+})
+
 test('precision', function (t) {
   t.equal(byteSize(10, { precision: 0 }), '10 B')
   t.equal(byteSize(15, { precision: 2 }), '15 B')
