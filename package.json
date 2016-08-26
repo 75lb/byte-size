@@ -10,12 +10,13 @@
   ],
   "version": "2.0.0",
   "license": "MIT",
-  "description": "Convert a bytes value to a more human-readable format. Choose between metric or IEC units.",
+  "description": "Convert a bytes (and octets) value to a more human-readable format. Choose between metric or IEC units.",
   "repository": "https://github.com/75lb/byte-size.git",
   "main": "./lib/byte-size.js",
   "keywords": [
     "convert",
     "bytes",
+    "octet",
     "size",
     "human",
     "readable",
@@ -23,11 +24,12 @@
     "IEC"
   ],
   "scripts": {
-    "test": "tape test/*.js",
+    "test": "test-runner test/*.js",
     "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^1.1.1",
-    "tape": "^4"
+    "core-assert": "^0.2.0",
+    "jsdoc-to-markdown": "^2.0.0-alpha",
+    "test-runner": "^0.2.3"
   }
 }
