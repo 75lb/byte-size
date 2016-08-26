@@ -63,11 +63,11 @@ Value | IEC (octet)
 | bytes | <code>number</code> |  | the bytes value to convert |
 | [options] | <code>object</code> |  | optional config |
 | [options.precision] | <code>number</code> | <code>1</code> | number of decimal places |
-| [options.units] | <code>string</code> | <code>&quot;metric&quot;</code> | select `"metric"` or `"iec"` or `"metric_octet"` or `"iec_octet"` units |
+| [options.units] | <code>string</code> | <code>&quot;metric&quot;</code> | select `'metric'` or `'iec'` or `'metric_octet'` or `'iec_octet'` units |
 
 **Example**  
 ```js
-> var byteSize = require("byte-size")
+> var byteSize = require('byte-size')
 
 > byteSize(1580)
 '1.6 kB'
@@ -90,4 +90,4 @@ Value | IEC (octet)
 
 * * *
 
-&copy; 2015 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+&copy; 2014-16 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).

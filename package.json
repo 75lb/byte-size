@@ -24,11 +24,12 @@
     "IEC"
   ],
   "scripts": {
-    "test": "tape test/*.js",
+    "test": "test-runner test/*.js",
     "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^1.1.1",
-    "tape": "^4"
+    "core-assert": "^0.2.0",
+    "jsdoc-to-markdown": "^2.0.0-alpha",
+    "test-runner": "^0.2.3"
   }
 }
