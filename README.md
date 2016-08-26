@@ -60,7 +60,7 @@ const byteSize = require('byte-size')
 ```
 <a name="exp_module_byte-size--byteSize"></a>
 
-### byteSize(bytes, [options]) ⇒ <code>string</code> ⏏
+### byteSize(bytes, [options]) ⇒ <code>Object</code> ⏏
 **Kind**: Exported function  
 
 | Param | Type | Default | Description |
@@ -75,21 +75,25 @@ const byteSize = require('byte-size')
 > const byteSize = require('byte-size')
 
 > byteSize(1580)
-'1.6 kB'
+{ value: '1.6', unit: 'kB' }
 
 > byteSize(1580, { units: 'iec' })
-'1.5 KiB'
+{ value: '1.5', unit: 'KiB' }
 
 > byteSize(1580, { units: 'iec', precision: 3 })
-'1.543 KiB'
+{ value: '1.543', unit: 'KiB' }
 
 > byteSize(1580, { units: 'iec', precision: 0 })
-'2 KiB'
+{ value: '2', unit: 'KiB' }
 
 > byteSize(1580, { units: 'metric_octet' })
-'1.6 ko'
+{ value: '1.6', unit: 'ko' }
 
 > byteSize(1580, { units: 'iec_octet' })
+{ value: '1.5', unit: 'Kio' }
+
+> const { value, unit }  = byteSize(1580, { units: 'iec_octet' })
+> `${value} ${unit}`
 '1.5 Kio'
 ```
 
