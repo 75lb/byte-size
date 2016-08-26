@@ -1,6 +1,7 @@
 [![view on npm](http://img.shields.io/npm/v/byte-size.svg)](https://www.npmjs.org/package/byte-size)
-[![npm module downloads per month](http://img.shields.io/npm/dm/byte-size.svg)](https://www.npmjs.org/package/byte-size)
+[![npm module downloads](http://img.shields.io/npm/dt/byte-size.svg)](https://www.npmjs.org/package/byte-size)
 [![Build Status](https://travis-ci.org/75lb/byte-size.svg?branch=master)](https://travis-ci.org/75lb/byte-size)
+[![Coverage Status](https://coveralls.io/repos/github/75lb/byte-size/badge.svg?branch=master)](https://coveralls.io/github/75lb/byte-size?branch=master)
 [![Dependency Status](https://david-dm.org/75lb/byte-size.svg)](https://david-dm.org/75lb/byte-size)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
@@ -53,6 +54,10 @@ Value | IEC (octet)
 1024^7 | Zio zebioctet
 1024^8 | Yio yobioctet
 
+**Example**  
+```js
+const byteSize = require('byte-size')
+```
 <a name="exp_module_byte-size--byteSize"></a>
 
 ### byteSize(bytes, [options]) ⇒ <code>string</code> ⏏
@@ -60,14 +65,14 @@ Value | IEC (octet)
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| bytes | <code>number</code> |  | the bytes value to convert |
-| [options] | <code>object</code> |  | optional config |
-| [options.precision] | <code>number</code> | <code>1</code> | number of decimal places |
-| [options.units] | <code>string</code> | <code>&quot;metric&quot;</code> | select `'metric'` or `'iec'` or `'metric_octet'` or `'iec_octet'` units |
+| bytes | <code>number</code> |  | the bytes value to convert. |
+| [options] | <code>object</code> |  | optional config. |
+| [options.precision] | <code>number</code> | <code>1</code> | number of decimal places. |
+| [options.units] | <code>string</code> | <code>&quot;metric&quot;</code> | select `'metric'`, `'iec'`, `'metric_octet'` or `'iec_octet'` units. |
 
 **Example**  
 ```js
-> var byteSize = require('byte-size')
+> const byteSize = require('byte-size')
 
 > byteSize(1580)
 '1.6 kB'
