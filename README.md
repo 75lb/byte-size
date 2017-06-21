@@ -1,5 +1,5 @@
-[![view on npm](http://img.shields.io/npm/v/byte-size.svg)](https://www.npmjs.org/package/byte-size)
-[![npm module downloads](http://img.shields.io/npm/dt/byte-size.svg)](https://www.npmjs.org/package/byte-size)
+[![view on npm](https://img.shields.io/npm/v/byte-size.svg)](https://www.npmjs.org/package/byte-size)
+[![npm module downloads](https://img.shields.io/npm/dt/byte-size.svg)](https://www.npmjs.org/package/byte-size)
 [![Build Status](https://travis-ci.org/75lb/byte-size.svg?branch=master)](https://travis-ci.org/75lb/byte-size)
 [![Coverage Status](https://coveralls.io/repos/github/75lb/byte-size/badge.svg?branch=master)](https://coveralls.io/github/75lb/byte-size?branch=master)
 [![Dependency Status](https://david-dm.org/75lb/byte-size.svg)](https://david-dm.org/75lb/byte-size)
@@ -92,6 +92,9 @@ const byteSize = require('byte-size')
 > byteSize(1580, { units: 'iec_octet' })
 { value: '1.5', unit: 'Kio' }
 
+> byteSize(1580, { units: 'iec_octet' }).toString()
+'1.5 Kio'
+
 > const { value, unit }  = byteSize(1580, { units: 'iec_octet' })
 > `${value} ${unit}`
 '1.5 Kio'
@@ -99,4 +102,4 @@ const byteSize = require('byte-size')
 
 * * *
 
-&copy; 2014-16 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+&copy; 2014-17 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
