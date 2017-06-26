@@ -98,7 +98,7 @@ class ByteSize {
   }
 
   toString () {
-    return `${this.value} ${this.unit}`
+    return `${this.value} ${this.unit}`.trim()
   }
 }
 
