@@ -12,6 +12,9 @@
   "license": "MIT",
   "description": "Convert a bytes (and octets) value to a more human-readable format. Choose between metric or IEC units.",
   "repository": "https://github.com/75lb/byte-size.git",
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "convert",
     "bytes",
