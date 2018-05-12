@@ -1,9 +1,9 @@
 'use strict'
-var TestRunner = require('test-runner')
-var byteSize = require('./')
-var a = require('assert')
+const TestRunner = require('test-runner')
+const byteSize = require('./')
+const a = require('assert')
 
-var runner = new TestRunner()
+const runner = new TestRunner()
 
 runner.test('metric', function () {
   a.deepEqual(byteSize(1000), { value: '1.0', unit: 'kB' })
@@ -18,7 +18,7 @@ runner.test('metric', function () {
 })
 
 runner.test('iec', function () {
-  var options = { units: 'iec' }
+  const options = { units: 'iec' }
   a.deepEqual(byteSize(1000, options), { value: '1000', unit: 'B' })
   a.deepEqual(byteSize(10000, options), { value: '9.8', unit: 'KiB' })
   a.deepEqual(byteSize(34565346, options), { value: '33.0', unit: 'MiB' })
@@ -32,7 +32,7 @@ runner.test('iec', function () {
 })
 
 runner.test('metric_octet', function () {
-  var options = { units: 'metric_octet' }
+  const options = { units: 'metric_octet' }
   a.deepEqual(byteSize(1000, options), { value: '1.0', unit: 'ko' })
   a.deepEqual(byteSize(10000, options), { value: '10.0', unit: 'ko' })
   a.deepEqual(byteSize(34565346, options), { value: '34.6', unit: 'Mo' })
@@ -45,7 +45,7 @@ runner.test('metric_octet', function () {
 })
 
 runner.test('iec_octet', function () {
-  var options = { units: 'iec_octet' }
+  const options = { units: 'iec_octet' }
   a.deepEqual(byteSize(1000, options), { value: '1000', unit: 'o' })
   a.deepEqual(byteSize(10000, options), { value: '9.8', unit: 'Kio' })
   a.deepEqual(byteSize(34565346, options), { value: '33.0', unit: 'Mio' })
