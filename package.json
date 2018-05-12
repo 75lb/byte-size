@@ -8,7 +8,7 @@
       "url": "http://repejota.com"
     }
   ],
-  "version": "4.0.2",
+  "version": "4.0.3",
   "license": "MIT",
   "description": "Convert a bytes (and octets) value to a more human-readable format. Choose between metric or IEC units.",
   "repository": "https://github.com/75lb/byte-size.git",
