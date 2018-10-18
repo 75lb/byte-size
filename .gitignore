@@ -2,3 +2,4 @@ tmp
 out
 node_modules
 .coveralls.yml
+coverage
