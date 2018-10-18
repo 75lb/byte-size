@@ -7,6 +7,7 @@ const runner = new TestRunner()
 
 runner.test('metric', function () {
   a.deepEqual(byteSize(1000), { value: '1.0', unit: 'kB' })
+  a.deepEqual(byteSize(-1000), { value: '-1.0', unit: 'kB' })
   a.deepEqual(byteSize(10000), { value: '10.0', unit: 'kB' })
   a.deepEqual(byteSize(34565346), { value: '34.6', unit: 'MB' })
   a.deepEqual(byteSize(56356534635465), { value: '56.4', unit: 'TB' })
@@ -21,6 +22,7 @@ runner.test('iec', function () {
   const options = { units: 'iec' }
   a.deepEqual(byteSize(1000, options), { value: '1000', unit: 'B' })
   a.deepEqual(byteSize(10000, options), { value: '9.8', unit: 'KiB' })
+  a.deepEqual(byteSize(-10000, options), { value: '-9.8', unit: 'KiB' })
   a.deepEqual(byteSize(34565346, options), { value: '33.0', unit: 'MiB' })
   a.deepEqual(byteSize(56356534635465, options), { value: '51.3', unit: 'TiB' })
   a.deepEqual(byteSize(42436356534635465, options), { value: '37.7', unit: 'PiB' })
@@ -36,6 +38,7 @@ runner.test('metric_octet', function () {
   a.deepEqual(byteSize(1000, options), { value: '1.0', unit: 'ko' })
   a.deepEqual(byteSize(10000, options), { value: '10.0', unit: 'ko' })
   a.deepEqual(byteSize(34565346, options), { value: '34.6', unit: 'Mo' })
+  a.deepEqual(byteSize(-34565346, options), { value: '-34.6', unit: 'Mo' })
   a.deepEqual(byteSize(56356534635465, options), { value: '56.4', unit: 'To' })
   a.deepEqual(byteSize(42436356534635465, options), { value: '42.4', unit: 'Po' })
   a.deepEqual(byteSize(5342436356534635465, options), { value: '5.3', unit: 'Eo' })
@@ -50,6 +53,7 @@ runner.test('iec_octet', function () {
   a.deepEqual(byteSize(10000, options), { value: '9.8', unit: 'Kio' })
   a.deepEqual(byteSize(34565346, options), { value: '33.0', unit: 'Mio' })
   a.deepEqual(byteSize(56356534635465, options), { value: '51.3', unit: 'Tio' })
+  a.deepEqual(byteSize(-56356534635465, options), { value: '-51.3', unit: 'Tio' })
   a.deepEqual(byteSize(42436356534635465, options), { value: '37.7', unit: 'Pio' })
   a.deepEqual(byteSize(5342436356534635465, options), { value: '4.6', unit: 'Eio' })
   a.deepEqual(byteSize(234235342436356534635465, options), { value: '198.4', unit: 'Zio' })
@@ -63,10 +67,11 @@ runner.test('precision', function () {
   a.deepEqual(byteSize(15, { precision: 2 }), { value: '15', unit: 'B' })
   a.deepEqual(byteSize(1500, { precision: 0 }), { value: '2', unit: 'kB' })
   a.deepEqual(byteSize(1500, { precision: 2 }), { value: '1.50', unit: 'kB' })
+  a.deepEqual(byteSize(-1500, { precision: 2 }), { value: '-1.50', unit: 'kB' })
   a.deepEqual(byteSize(1500000, { precision: 5 }), { value: '1.50000', unit: 'MB' })
 })
 
 runner.test('toString', function () {
-  const result = byteSize(1000)
-  a.strictEqual(result.toString(), '1.0 kB')
+  a.strictEqual(byteSize(1000).toString(), '1.0 kB')
+  a.strictEqual(byteSize(-1000).toString(), '-1.0 kB')
 })

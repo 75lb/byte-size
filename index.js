@@ -74,6 +74,8 @@ class ByteSize {
     ]
 
     const base = options.units === 'metric' || options.units === 'metric_octet' ? 1000 : 1024
+    const prefix = bytes < 0 ? '-' : '';
+    bytes = Math.abs(bytes);
 
     for (let i = 0; i < table.length; i++) {
       const lower = Math.pow(base, table[i].expFrom)
@@ -81,18 +83,18 @@ class ByteSize {
       if (bytes >= lower && bytes < upper) {
         const units = table[i][options.units]
         if (i === 0) {
-          this.value = String(bytes)
+          this.value = prefix + bytes
           this.unit = units
           return
         } else {
-          this.value = (bytes / lower).toFixed(options.precision)
+          this.value = prefix + (bytes / lower).toFixed(options.precision)
           this.unit = units
           return
         }
       }
     }
 
-    this.value = String(bytes)
+    this.value = prefix + bytes
     this.unit = ''
   }
 
