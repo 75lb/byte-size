@@ -1,4 +1,3 @@
-'use strict'
 import TestRunner from 'test-runner'
 import byteSize from '../index.mjs'
 import a from 'assert'

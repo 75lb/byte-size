@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global.byteSize = factory());
-}(this, (function () { 'use strict';
+  (global = global || self, global.byteSize = factory());
+}(this, function () { 'use strict';
 
   /**
    * An isomorphic, load-anywhere function to convert a bytes value into a more human-readable format. Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
@@ -149,4 +149,4 @@
 
   return byteSize;
 
-})));
+}));

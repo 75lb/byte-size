@@ -1,5 +1,3 @@
-'use strict'
-
 /**
  * An isomorphic, load-anywhere function to convert a bytes value into a more human-readable format. Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
  *

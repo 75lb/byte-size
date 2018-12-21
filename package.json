@@ -12,7 +12,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "engines": {
-    "node": ">4.0.0"
+    "node": ">=6.0.0"
   },
   "description": "Convert a bytes (and octets) value to a more human-readable format. Choose between metric or IEC units.",
   "repository": "https://github.com/75lb/byte-size.git",
