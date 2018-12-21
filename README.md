@@ -102,7 +102,7 @@ const byteSize = require('byte-size')
 
 ### Load anywhere
 
-This library can be loaded anywhere, natively without transpilation.
+This library is compatible with Node.js, the Web and any style of module loader. It can be loaded anywhere, natively without transpilation.
 
 Node.js:
 
