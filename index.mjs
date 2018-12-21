@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * Convert a bytes value to a more human-readable format. Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
+ * An isomorphic, load-anywhere function to convert a bytes value into a more human-readable format. Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
  *
  * Value | Metric
  * ----- | -------------
@@ -53,7 +53,6 @@
  * const byteSize = require('byte-size')
  * ```
  */
-module.exports = byteSize
 
 class ByteSize {
   constructor (bytes, options) {
@@ -143,3 +142,5 @@ class ByteSize {
 function byteSize (bytes, options) {
   return new ByteSize(bytes, options)
 }
+
+export default byteSize

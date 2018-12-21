@@ -1,7 +1,7 @@
 'use strict'
-const TestRunner = require('test-runner')
-const byteSize = require('./')
-const a = require('assert')
+import TestRunner from 'test-runner'
+import byteSize from '../index.mjs'
+import a from 'assert'
 
 const runner = new TestRunner()
 
