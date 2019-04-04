@@ -96,7 +96,7 @@ const byteSize = require('byte-size')
 '1.5 Kio'
 
 > byteSize(1580).join('')
-'1.6Kb'
+'1.6kB'
 
 > const { value, unit }  = byteSize(1580, { units: 'iec_octet' })
 > `${value} ${unit}`
