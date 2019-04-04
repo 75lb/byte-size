@@ -95,7 +95,11 @@ class ByteSize {
     this.unit = ''
   }
 
-  toString (delimiter = ' ') {
+  toString () {
+    return `${this.value} ${this.unit}`.trim()
+  }
+
+  join (delimiter = ',') {
     return [this.value, this.unit].filter(Boolean).join(delimiter)
   }
 }

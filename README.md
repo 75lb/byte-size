@@ -95,7 +95,7 @@ const byteSize = require('byte-size')
 > byteSize(1580, { units: 'iec_octet' }).toString()
 '1.5 Kio'
 
-> byteSize(1580).toString('') // toString with custom delimiter
+> byteSize(1580).join('')
 '1.6Kb'
 
 > const { value, unit }  = byteSize(1580, { units: 'iec_octet' })
