@@ -73,4 +73,7 @@ runner.test('precision', function () {
 runner.test('toString', function () {
   a.strictEqual(byteSize(1000).toString(), '1.0 kB')
   a.strictEqual(byteSize(-1000).toString(), '-1.0 kB')
+  a.strictEqual(byteSize(1000).toString(''), '1.0kB')
+  a.strictEqual(byteSize(1000).toString('XYZ'), '1.0XYZkB')
+  a.strictEqual(byteSize(3234545234235342436356534635465).toString('XYZ'), '3.2345452342353426e+30')
 })
