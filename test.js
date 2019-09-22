@@ -1,10 +1,10 @@
-import TestRunner from 'test-runner'
-import byteSize from '../index.mjs'
-import a from 'assert'
+const Tom = require('test-runner').Tom
+const byteSize = require('./')
+const a = require('assert')
 
-const runner = new TestRunner()
+const tom = module.exports = new Tom('test')
 
-runner.test('metric', function () {
+tom.test('metric', function () {
   a.deepEqual(byteSize(1000), { value: '1.0', unit: 'kB' })
   a.deepEqual(byteSize(-1000), { value: '-1.0', unit: 'kB' })
   a.deepEqual(byteSize(10000), { value: '10.0', unit: 'kB' })
@@ -17,7 +17,7 @@ runner.test('metric', function () {
   a.deepEqual(byteSize(3234545234235342436356534635465), { value: '3.2345452342353426e+30', unit: '' })
 })
 
-runner.test('iec', function () {
+tom.test('iec', function () {
   const options = { units: 'iec' }
   a.deepEqual(byteSize(1000, options), { value: '1000', unit: 'B' })
   a.deepEqual(byteSize(10000, options), { value: '9.8', unit: 'KiB' })
@@ -32,7 +32,7 @@ runner.test('iec', function () {
   a.deepEqual(byteSize(9873234545234235342436356534635465, options), { value: '9.873234545234235e+33', unit: '' })
 })
 
-runner.test('metric_octet', function () {
+tom.test('metric_octet', function () {
   const options = { units: 'metric_octet' }
   a.deepEqual(byteSize(1000, options), { value: '1.0', unit: 'ko' })
   a.deepEqual(byteSize(10000, options), { value: '10.0', unit: 'ko' })
@@ -46,7 +46,7 @@ runner.test('metric_octet', function () {
   a.deepEqual(byteSize(3234545234235342436356534635465, options), { value: '3.2345452342353426e+30', unit: '' })
 })
 
-runner.test('iec_octet', function () {
+tom.test('iec_octet', function () {
   const options = { units: 'iec_octet' }
   a.deepEqual(byteSize(1000, options), { value: '1000', unit: 'o' })
   a.deepEqual(byteSize(10000, options), { value: '9.8', unit: 'Kio' })
@@ -61,7 +61,7 @@ runner.test('iec_octet', function () {
   a.deepEqual(byteSize(9873234545234235342436356534635465, options), { value: '9.873234545234235e+33', unit: '' })
 })
 
-runner.test('precision', function () {
+tom.test('precision', function () {
   a.deepEqual(byteSize(10, { precision: 0 }), { value: '10', unit: 'B' })
   a.deepEqual(byteSize(15, { precision: 2 }), { value: '15', unit: 'B' })
   a.deepEqual(byteSize(1500, { precision: 0 }), { value: '2', unit: 'kB' })
@@ -70,7 +70,7 @@ runner.test('precision', function () {
   a.deepEqual(byteSize(1500000, { precision: 5 }), { value: '1.50000', unit: 'MB' })
 })
 
-runner.test('toString', function () {
+tom.test('toString', function () {
   a.strictEqual(byteSize(1000).toString(), '1.0 kB')
   a.strictEqual(byteSize(-1000).toString(), '-1.0 kB')
 })

@@ -2,13 +2,13 @@
 [![npm module downloads](https://img.shields.io/npm/dt/byte-size.svg)](https://www.npmjs.org/package/byte-size)
 [![Build Status](https://travis-ci.org/75lb/byte-size.svg?branch=master)](https://travis-ci.org/75lb/byte-size)
 [![Coverage Status](https://coveralls.io/repos/github/75lb/byte-size/badge.svg?branch=master)](https://coveralls.io/github/75lb/byte-size?branch=master)
-[![Dependency Status](https://david-dm.org/75lb/byte-size.svg)](https://david-dm.org/75lb/byte-size)
+[![Dependency Status](https://badgen.net/david/dep/75lb/byte-size)](https://david-dm.org/75lb/byte-size)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 <a name="module_byte-size"></a>
 
 ## byte-size
-An isomorphic, load-anywhere function to convert a bytes value into a more human-readable format. Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
+An isomorphic, load-anywhere function to convert a bytes or octets value (e.g. `34565346`) to a human-readable string (`34.6 MB`). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
 
 Value | Metric
 ----- | -------------
@@ -130,4 +130,4 @@ Old browser (adds `window.byteSize`):
 
 * * *
 
-&copy; 2014-18 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+&copy; 2014-19 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).

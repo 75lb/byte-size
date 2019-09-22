@@ -5,7 +5,7 @@
 }(this, function () { 'use strict';
 
   /**
-   * An isomorphic, load-anywhere function to convert a bytes value into a more human-readable format. Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
+   * An isomorphic, load-anywhere function to convert a bytes or octets value (e.g. `34565346`) to a human-readable string (`34.6 MB`). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
    *
    * Value | Metric
    * ----- | -------------
