@@ -33,13 +33,19 @@
   "scripts": {
     "test": "npm run dist && test-runner test.js",
     "docs": "jsdoc2md -t README.hbs dist/index.js > README.md",
-    "cover": "istanbul cover ./node_modules/.bin/test-runner test.js && cat coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "cover": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "dist": "rollup -f umd -n byteSize -o dist/index.js index.mjs"
   },
   "devDependencies": {
     "coveralls": "^3.0.7",
     "jsdoc-to-markdown": "^5.0.2",
+    "nyc": "^14.1.1",
     "rollup": "^1.25.2",
     "test-runner": "^0.6.0"
+  },
+  "standard": {
+    "ignore": [
+      "dist"
+    ]
   }
 }
