@@ -6,10 +6,6 @@
 
   /**
    * @module byte-size
-   * @example
-   * ```js
-   * const byteSize = require('byte-size')
-   * ```
    */
 
   class ByteSize {
@@ -94,37 +90,8 @@
    * @param [options] {object} - optional config.
    * @param [options.precision=1] {number} - number of decimal places.
    * @param [options.units=metric] {string} - select `'metric'`, `'iec'`, `'metric_octet'` or `'iec_octet'` units.
-   * @returns {{ value: string, unit: string}}
+   * @returns {{ value: string, unit: string, long: string }}
    * @alias module:byte-size
-   * @example
-   * ```js
-   * > const byteSize = require('byte-size')
-   *
-   * > byteSize(1580)
-   * { value: '1.6', unit: 'kB' }
-   *
-   * > byteSize(1580, { units: 'iec' })
-   * { value: '1.5', unit: 'KiB' }
-   *
-   * > byteSize(1580, { units: 'iec', precision: 3 })
-   * { value: '1.543', unit: 'KiB' }
-   *
-   * > byteSize(1580, { units: 'iec', precision: 0 })
-   * { value: '2', unit: 'KiB' }
-   *
-   * > byteSize(1580, { units: 'metric_octet' })
-   * { value: '1.6', unit: 'ko' }
-   *
-   * > byteSize(1580, { units: 'iec_octet' })
-   * { value: '1.5', unit: 'Kio' }
-   *
-   * > byteSize(1580, { units: 'iec_octet' }).toString()
-   * '1.5 Kio'
-   *
-   * > const { value, unit }  = byteSize(1580, { units: 'iec_octet' })
-   * > `${value} ${unit}`
-   * '1.5 Kio'
-   * ```
    */
   function byteSize (bytes, options) {
     return new ByteSize(bytes, options)

@@ -1,9 +1,5 @@
 /**
  * @module byte-size
- * @example
- * ```js
- * const byteSize = require('byte-size')
- * ```
  */
 
 class ByteSize {
