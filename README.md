@@ -5,6 +5,43 @@
 [![Dependency Status](https://badgen.net/david/dep/75lb/byte-size)](https://david-dm.org/75lb/byte-size)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
+# byte-size
+
+An isomorphic, load-anywhere function to convert a bytes or octets value (e.g. `34565346`) to a human-readable string (`34.6 MB`). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
+
+Value  | Metric        | Metric (octet) |
+-----  | ------------- | -------------- |
+1000   | kB  kilobyte  | ko  kilooctet
+1000^2 | MB  megabyte  | Mo  megaoctet
+1000^3 | GB  gigabyte  | Go  gigaoctet
+1000^4 | TB  terabyte  | To  teraoctet
+1000^5 | PB  petabyte  | Po  petaoctet
+1000^6 | EB  exabyte   | Eo  exaoctet
+1000^7 | ZB  zettabyte | Zo  zettaoctet
+1000^8 | YB  yottabyte | Yo  yottaoctet
+
+Value | IEC
+----- | ------------
+1024  | KiB kibibyte
+1024^2 | MiB mebibyte
+1024^3 | GiB gibibyte
+1024^4 | TiB tebibyte
+1024^5 | PiB pebibyte
+1024^6 | EiB exbibyte
+1024^7 | ZiB zebibyte
+1024^8 | YiB yobibyte
+
+Value | IEC (octet)
+----- | ------------
+1024  | Kio kilooctet
+1024^2 | Mio mebioctet
+1024^3 | Gio gibioctet
+1024^4 | Tio tebioctet
+1024^5 | Pio pebioctet
+1024^6 | Eio exbioctet
+1024^7 | Zio zebioctet
+1024^8 | Yio yobioctet
+
 <a name="module_byte-size"></a>
 
 ## byte-size

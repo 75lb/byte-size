@@ -32,14 +32,14 @@
   ],
   "scripts": {
     "test": "npm run dist && test-runner test.js",
-    "docs": "jsdoc2md -t README.hbs dist/index.js > README.md; echo",
+    "docs": "jsdoc2md -t README.hbs dist/index.js > README.md",
     "cover": "istanbul cover ./node_modules/.bin/test-runner test.js && cat coverage/lcov.info | ./node_modules/.bin/coveralls",
     "dist": "rollup -f umd -n byteSize -o dist/index.js index.mjs"
   },
   "devDependencies": {
-    "coveralls": "^3.0.6",
-    "jsdoc-to-markdown": "^5.0.1",
-    "rollup": "^1.21.4",
+    "coveralls": "^3.0.7",
+    "jsdoc-to-markdown": "^5.0.2",
+    "rollup": "^1.25.2",
     "test-runner": "^0.6.0"
   }
 }
