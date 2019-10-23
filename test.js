@@ -66,10 +66,13 @@ tom.test('iec_octet', function () {
   a.deepEqual(byteSize(9873234545234235342436356534635465, options), { value: '9.873234545234235e+33', unit: '' })
 })
 
-tom.test('precision', function () {
+tom.test('precision in a range where from=0 - ignore precision', function () {
+  a.deepEqual(byteSize(10), { value: '10', unit: 'B' })
   a.deepEqual(byteSize(10, { precision: 0 }), { value: '10', unit: 'B' })
-  a.deepEqual(byteSize(10, { precision: 1 }), { value: '10.0', unit: 'B' })
-  a.deepEqual(byteSize(15, { precision: 2 }), { value: '15.00', unit: 'B' })
+  a.deepEqual(byteSize(10, { precision: 1 }), { value: '10', unit: 'B' })
+})
+
+tom.test('precision', function () {
   a.deepEqual(byteSize(1500, { precision: 0 }), { value: '2', unit: 'kB' })
   a.deepEqual(byteSize(1500, { precision: 2 }), { value: '1.50', unit: 'kB' })
   a.deepEqual(byteSize(-1500, { precision: 2 }), { value: '-1.50', unit: 'kB' })

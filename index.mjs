@@ -13,7 +13,7 @@ class ByteSize {
       precision: 1
     }, options)
 
-    const data = {
+    const tables = {
       metric: [
         { from: 0   , to: 1e3 , unit: 'B' },
         { from: 1e3 , to: 1e6 , unit: 'kB' },
@@ -37,7 +37,7 @@ class ByteSize {
         { from: 1e24, to: 1e27, unit: 'Yo' },
       ],
       iec: [
-        { from: Math.pow(1024, 0), to: Math.pow(1024, 1), unit: 'B' },
+        { from: 0                , to: Math.pow(1024, 1), unit: 'B' },
         { from: Math.pow(1024, 1), to: Math.pow(1024, 2), unit: 'KiB' },
         { from: Math.pow(1024, 2), to: Math.pow(1024, 3), unit: 'MiB' },
         { from: Math.pow(1024, 3), to: Math.pow(1024, 4), unit: 'GiB' },
@@ -48,7 +48,7 @@ class ByteSize {
         { from: Math.pow(1024, 8), to: Math.pow(1024, 9), unit: 'YiB' },
       ],
       iec_octet: [
-        { from: Math.pow(1024, 0), to: Math.pow(1024, 1), unit: 'o' },
+        { from: 0                , to: Math.pow(1024, 1), unit: 'o' },
         { from: Math.pow(1024, 1), to: Math.pow(1024, 2), unit: 'Kio' },
         { from: Math.pow(1024, 2), to: Math.pow(1024, 3), unit: 'Mio' },
         { from: Math.pow(1024, 3), to: Math.pow(1024, 4), unit: 'Gio' },
@@ -62,10 +62,11 @@ class ByteSize {
 
     const prefix = bytes < 0 ? '-' : ''
     bytes = Math.abs(bytes)
-    const units = data[options.units].find(u => bytes >= u.from && bytes < u.to)
+    const table = options.table || tables[options.units]
+    const units = table.find(u => bytes >= u.from && bytes < u.to)
     if (units) {
       const value = units.from === 0
-        ? prefix + bytes.toFixed(options.precision)
+        ? prefix + bytes
         : prefix + (bytes / units.from).toFixed(options.precision)
       this.value = value
       this.unit = units.unit
