@@ -86,11 +86,12 @@
   }
 
   /**
+   * Returns an object with the spec `{ value: string, unit: string, long: string }`.
    * @param {number} - the bytes value to convert.
    * @param [options] {object} - optional config.
    * @param [options.precision=1] {number} - number of decimal places.
    * @param [options.units=metric] {string} - select `'metric'`, `'iec'`, `'metric_octet'` or `'iec_octet'` units.
-   * @returns {{ value: string, unit: string, long: string }}
+   * @returns {object}
    * @alias module:byte-size
    */
   function byteSize (bytes, options) {

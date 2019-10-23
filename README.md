@@ -67,7 +67,9 @@ Value  | IEC          | IEC (octet)   |
 ## byte-size
 <a name="exp_module_byte-size--byteSize"></a>
 
-### byteSize(bytes, [options]) ⇒ <code>Object</code> ⏏
+### byteSize(bytes, [options]) ⇒ <code>object</code> ⏏
+Returns an object with the spec `{ value: string, unit: string, long: string }`.
+
 **Kind**: Exported function  
 
 | Param | Type | Default | Description |
