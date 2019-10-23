@@ -86,7 +86,7 @@
   }
 
   /**
-   * Returns an object with the spec `{ value: string, unit: string, long: string }`.
+   * Returns an object with the spec `{ value: string, unit: string, long: string }`. The object also defines a `toString` method meaning it can be used in any string context.
    * @param {number} - the bytes value to convert.
    * @param [options] {object} - optional config.
    * @param [options.precision=1] {number} - number of decimal places.

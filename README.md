@@ -68,7 +68,7 @@ Value  | IEC          | IEC (octet)   |
 <a name="exp_module_byte-size--byteSize"></a>
 
 ### byteSize(bytes, [options]) ⇒ <code>object</code> ⏏
-Returns an object with the spec `{ value: string, unit: string, long: string }`.
+Returns an object with the spec `{ value: string, unit: string, long: string }`. The object also defines a `toString` method meaning it can be used in any string context.
 
 **Kind**: Exported function  
 
