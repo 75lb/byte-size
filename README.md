@@ -5,6 +5,8 @@
 [![Dependency Status](https://badgen.net/david/dep/75lb/byte-size)](https://david-dm.org/75lb/byte-size)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
+***Upgraders, please check the [release notes](https://github.com/75lb/byte-size/releases).***
+
 # byte-size
 
 An isomorphic, load-anywhere function to convert a bytes value (e.g. 3456) to a human-readable string ('3.5 kB'). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
