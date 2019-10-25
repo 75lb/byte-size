@@ -315,7 +315,7 @@ tom.test('toString 2', function () {
 })
 
 tom.test('use custom table 1', function () {
-  const custom = {
+  const customUnits = {
     test: [
       { from: 0   , to: 1e3 , unit: ''  },
       { from: 1e3 , to: 1e6 , unit: 'K', long: 'thousand' },
@@ -323,13 +323,13 @@ tom.test('use custom table 1', function () {
       { from: 1e9 , to: 1e12, unit: 'Bn', long: 'billion' }
     ]
   }
-  const result = byteSize(100, { custom, units: 'test' })
+  const result = byteSize(100, { customUnits, units: 'test' })
   a.equal(result.value, '100')
   a.equal(result.unit, '')
 })
 
 tom.test('use custom table 2', function () {
-  const custom = {
+  const customUnits = {
     test: [
       { from: 0   , to: 1e3 , unit: ''  },
       { from: 1e3 , to: 1e6 , unit: 'K', long: 'thousand' },
@@ -337,13 +337,13 @@ tom.test('use custom table 2', function () {
       { from: 1e9 , to: 1e12, unit: 'Bn', long: 'billion' }
     ]
   }
-  const result = byteSize(10000, { custom, units: 'test' })
+  const result = byteSize(10000, { customUnits, units: 'test' })
   a.equal(result.value, '10.0')
   a.equal(result.unit, 'K')
 })
 
 tom.test('custom table - no unit value specified, use default', function () {
-  const custom = {
+  const customUnits = {
     test: [
       { from: 0   , to: 1e3 , unit: ''  },
       { from: 1e3 , to: 1e6 , unit: 'K', long: 'thousand' },
@@ -351,7 +351,7 @@ tom.test('custom table - no unit value specified, use default', function () {
       { from: 1e9 , to: 1e12, unit: 'Bn', long: 'billion' }
     ]
   }
-  const result = byteSize(100, { custom })
+  const result = byteSize(100, { customUnits })
   a.equal(result.value, '100')
   a.equal(result.unit, 'B')
 })

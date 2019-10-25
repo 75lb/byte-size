@@ -55,7 +55,7 @@ class ByteSize {
         { from: Math.pow(1024, 8), to: Math.pow(1024, 9), unit: 'Yio', long: 'yobioctet' },
       ],
     }
-    Object.assign(tables, options.custom)
+    Object.assign(tables, options.customUnits)
 
     const prefix = bytes < 0 ? '-' : ''
     bytes = Math.abs(bytes)
@@ -89,7 +89,8 @@ class ByteSize {
  * @param {number} - the bytes value to convert.
  * @param [options] {object} - optional config.
  * @param [options.precision=1] {number} - number of decimal places.
- * @param [options.units=metric] {string} - select `'metric'`, `'iec'`, `'metric_octet'` or `'iec_octet'` units.
+ * @param [options.units=metric] {string} - Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`.
+ * @param [options.customUnits] {object} - Custom units table.
  * @returns {object}
  * @alias module:byte-size
  */

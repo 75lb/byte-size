@@ -35,33 +35,61 @@ Value  | IEC          | IEC (octet)   |
 
 ## Synopsis
 
+By default, `byteSize` converts the input number to a human readable string with a precision of 1 and metric units.
+
 ```js
 > const byteSize = require('byte-size')
 
 > byteSize(1580)
 { value: '1.6', unit: 'kB' }
+```
 
+The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context.
+
+```js
+> `Filesize: ${byteSize(12400)}`
+'Filesize: 12.4 kB'
+```
+
+Beside the default of `metric`, there are three other built-in units available: `metric_octet`, `iec` and `iec_octet`.
+
+```js
 > byteSize(1580, { units: 'iec' })
 { value: '1.5', unit: 'KiB' }
 
+> byteSize(1580, { units: 'iec_octet' })
+{ value: '1.5', unit: 'Kio' }
+
+> byteSize(1580, { units: 'metric_octet' })
+{ value: '1.6', unit: 'ko' }
+```
+
+You can adjust the `precision`.
+
+```js
 > byteSize(1580, { units: 'iec', precision: 3 })
 { value: '1.543', unit: 'KiB' }
 
 > byteSize(1580, { units: 'iec', precision: 0 })
 { value: '2', unit: 'KiB' }
+```
 
-> byteSize(1580, { units: 'metric_octet' })
-{ value: '1.6', unit: 'ko' }
+Define custom units by passing an object containing one or more additional conversion tables to `options.customUnits`.
 
-> byteSize(1580, { units: 'iec_octet' })
-{ value: '1.5', unit: 'Kio' }
+```
+> const customUnits = {
+  simple: [
+    { from: 0   , to: 1e3 , unit: ''  },
+    { from: 1e3 , to: 1e6 , unit: 'K', long: 'thousand' },
+    { from: 1e6 , to: 1e9 , unit: 'Mn', long: 'million' },
+    { from: 1e9 , to: 1e12, unit: 'Bn', long: 'billion' }
+  ]
+}
 
-> byteSize(1580, { units: 'iec_octet' }).toString()
-'1.5 Kio'
+> const { value, unit } = byteSize(10000, { customUnits, units: 'simple' })
 
-> const { value, unit }  = byteSize(1580, { units: 'iec_octet' })
-> `${value} ${unit}`
-'1.5 Kio'
+> `${value}${unit}`
+'10.0K'
 ```
 
 {{>main}}

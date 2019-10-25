@@ -35,33 +35,61 @@ Value  | IEC          | IEC (octet)   |
 
 ## Synopsis
 
+By default, `byteSize` converts the input number to a human readable string with a precision of 1 and metric units.
+
 ```js
 > const byteSize = require('byte-size')
 
 > byteSize(1580)
 { value: '1.6', unit: 'kB' }
+```
 
+The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context.
+
+```js
+> `Filesize: ${byteSize(12400)}`
+'Filesize: 12.4 kB'
+```
+
+Beside the default of `metric`, there are three other built-in units available: `metric_octet`, `iec` and `iec_octet`.
+
+```js
 > byteSize(1580, { units: 'iec' })
 { value: '1.5', unit: 'KiB' }
 
+> byteSize(1580, { units: 'iec_octet' })
+{ value: '1.5', unit: 'Kio' }
+
+> byteSize(1580, { units: 'metric_octet' })
+{ value: '1.6', unit: 'ko' }
+```
+
+You can adjust the `precision`.
+
+```js
 > byteSize(1580, { units: 'iec', precision: 3 })
 { value: '1.543', unit: 'KiB' }
 
 > byteSize(1580, { units: 'iec', precision: 0 })
 { value: '2', unit: 'KiB' }
+```
 
-> byteSize(1580, { units: 'metric_octet' })
-{ value: '1.6', unit: 'ko' }
+Define custom units by passing an object containing one or more additional conversion tables to `options.customUnits`.
 
-> byteSize(1580, { units: 'iec_octet' })
-{ value: '1.5', unit: 'Kio' }
+```
+> const customUnits = {
+  simple: [
+    { from: 0   , to: 1e3 , unit: ''  },
+    { from: 1e3 , to: 1e6 , unit: 'K', long: 'thousand' },
+    { from: 1e6 , to: 1e9 , unit: 'Mn', long: 'million' },
+    { from: 1e9 , to: 1e12, unit: 'Bn', long: 'billion' }
+  ]
+}
 
-> byteSize(1580, { units: 'iec_octet' }).toString()
-'1.5 Kio'
+> const { value, unit } = byteSize(10000, { customUnits, units: 'simple' })
 
-> const { value, unit }  = byteSize(1580, { units: 'iec_octet' })
-> `${value} ${unit}`
-'1.5 Kio'
+> `${value}${unit}`
+'10.0K'
 ```
 
 <a name="module_byte-size"></a>
@@ -70,7 +98,7 @@ Value  | IEC          | IEC (octet)   |
 <a name="exp_module_byte-size--byteSize"></a>
 
 ### byteSize(bytes, [options]) ⇒ <code>object</code> ⏏
-Returns an object with the spec `{ value: string, unit: string, long: string }`. The object also defines a `toString` method meaning it can be used in any string context.
+Returns an object with the spec `{ value: string, unit: string, long: string }`. The return object defines a `toString` method meaning it can be used in any string context.
 
 **Kind**: Exported function  
 
@@ -79,7 +107,8 @@ Returns an object with the spec `{ value: string, unit: string, long: string }`.
 | bytes | <code>number</code> |  | the bytes value to convert. |
 | [options] | <code>object</code> |  | optional config. |
 | [options.precision] | <code>number</code> | <code>1</code> | number of decimal places. |
-| [options.units] | <code>string</code> | <code>&quot;metric&quot;</code> | select `'metric'`, `'iec'`, `'metric_octet'` or `'iec_octet'` units. |
+| [options.units] | <code>string</code> | <code>&quot;metric&quot;</code> | Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. |
+| [options.customUnits] | <code>object</code> |  | Custom units table. |
 
 
 ## Load anywhere
