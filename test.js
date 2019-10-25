@@ -313,3 +313,52 @@ tom.test('toString 2', function () {
   const result = byteSize(-1000).toString()
   a.equal(result, '-1.0 kB')
 })
+
+tom.test('use custom table 1', function () {
+  const custom = {
+    test: [
+      { from: 0   , to: 1e3 , unit: ''  },
+      { from: 1e3 , to: 1e6 , unit: 'K', long: 'thousand' },
+      { from: 1e6 , to: 1e9 , unit: 'Mn', long: 'million' },
+      { from: 1e9 , to: 1e12, unit: 'Bn', long: 'billion' }
+    ]
+  }
+  const result = byteSize(100, { custom, units: 'test' })
+  a.equal(result.value, '100')
+  a.equal(result.unit, '')
+})
+
+tom.test('use custom table 2', function () {
+  const custom = {
+    test: [
+      { from: 0   , to: 1e3 , unit: ''  },
+      { from: 1e3 , to: 1e6 , unit: 'K', long: 'thousand' },
+      { from: 1e6 , to: 1e9 , unit: 'Mn', long: 'million' },
+      { from: 1e9 , to: 1e12, unit: 'Bn', long: 'billion' }
+    ]
+  }
+  const result = byteSize(10000, { custom, units: 'test' })
+  a.equal(result.value, '10.0')
+  a.equal(result.unit, 'K')
+})
+
+tom.test('custom table - no unit value specified, use default', function () {
+  const custom = {
+    test: [
+      { from: 0   , to: 1e3 , unit: ''  },
+      { from: 1e3 , to: 1e6 , unit: 'K', long: 'thousand' },
+      { from: 1e6 , to: 1e9 , unit: 'Mn', long: 'million' },
+      { from: 1e9 , to: 1e12, unit: 'Bn', long: 'billion' }
+    ]
+  }
+  const result = byteSize(100, { custom })
+  a.equal(result.value, '100')
+  a.equal(result.unit, 'B')
+})
+
+tom.test('invalid units', function () {
+  a.throws(
+    () => byteSize(10, { units: 'broken' }),
+    /invalid units/i
+  )
+})

@@ -55,22 +55,27 @@ class ByteSize {
         { from: Math.pow(1024, 8), to: Math.pow(1024, 9), unit: 'Yio', long: 'yobioctet' },
       ],
     }
+    Object.assign(tables, options.custom)
 
     const prefix = bytes < 0 ? '-' : ''
     bytes = Math.abs(bytes)
-    const table = options.table || tables[options.units]
-    const units = table.find(u => bytes >= u.from && bytes < u.to)
-    if (units) {
-      const value = units.from === 0
-        ? prefix + bytes
-        : prefix + (bytes / units.from).toFixed(options.precision)
-      this.value = value
-      this.unit = units.unit
-      this.long = units.long
+    const table = tables[options.units]
+    if (table) {
+      const units = table.find(u => bytes >= u.from && bytes < u.to)
+      if (units) {
+        const value = units.from === 0
+          ? prefix + bytes
+          : prefix + (bytes / units.from).toFixed(options.precision)
+        this.value = value
+        this.unit = units.unit
+        this.long = units.long
+      } else {
+        this.value = prefix + bytes
+        this.unit = ''
+        this.long = ''
+      }
     } else {
-      this.value = prefix + bytes
-      this.unit = ''
-      this.long = ''
+      throw new Error(`Invalid units specified: ${options.units}`)
     }
   }
 
