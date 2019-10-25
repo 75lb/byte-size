@@ -9,7 +9,7 @@
 
 # byte-size
 
-An isomorphic, load-anywhere function to convert a bytes value (e.g. 3456) to a human-readable string ('3.5 kB'). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte), summarised below.
+An isomorphic, load-anywhere function to convert a bytes value (e.g. 3456) to a human-readable string ('3.5 kB'). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte) (summarised below) or specify your own custom units.
 
 Value  | Metric        | Metric (octet) |
 -----  | ------------- | -------------- |
@@ -24,7 +24,7 @@ Value  | Metric        | Metric (octet) |
 
 Value  | IEC          | IEC (octet)   |
 ------ | ------------ | ------------- |
-1024   | KiB kibibyte | Kio kilooctet |
+1024   | KiB kibibyte | Kio kibioctet |
 1024^2 | MiB mebibyte | Mio mebioctet |
 1024^3 | GiB gibibyte | Gio gibioctet |
 1024^4 | TiB tebibyte | Tio tebioctet |
@@ -35,13 +35,13 @@ Value  | IEC          | IEC (octet)   |
 
 ## Synopsis
 
-By default, `byteSize` converts the input number to a human readable string with a precision of 1 and metric units.
+By default, `byteSize` converts the input number to a human readable string with metric units and a precision of 1.
 
 ```js
 > const byteSize = require('byte-size')
 
 > byteSize(1580)
-{ value: '1.6', unit: 'kB' }
+{ value: '1.6', unit: 'kB', long: 'kilobytes' }
 ```
 
 The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context.
@@ -55,28 +55,28 @@ Beside the default of `metric`, there are three other built-in units available: 
 
 ```js
 > byteSize(1580, { units: 'iec' })
-{ value: '1.5', unit: 'KiB' }
+{ value: '1.5', unit: 'KiB', long: 'kibibytes' }
 
 > byteSize(1580, { units: 'iec_octet' })
-{ value: '1.5', unit: 'Kio' }
+{ value: '1.5', unit: 'Kio', long: 'kibioctets' }
 
 > byteSize(1580, { units: 'metric_octet' })
-{ value: '1.6', unit: 'ko' }
+{ value: '1.6', unit: 'ko', long: 'kilooctets' }
 ```
 
 You can adjust the `precision`.
 
 ```js
 > byteSize(1580, { units: 'iec', precision: 3 })
-{ value: '1.543', unit: 'KiB' }
+{ value: '1.543', unit: 'KiB', long: 'kibibytes' }
 
 > byteSize(1580, { units: 'iec', precision: 0 })
-{ value: '2', unit: 'KiB' }
+{ value: '2', unit: 'KiB', long: 'kibibytes' }
 ```
 
 Define custom units by passing an object containing one or more additional conversion tables to `options.customUnits`.
 
-```
+```js
 > const customUnits = {
   simple: [
     { from: 0   , to: 1e3 , unit: ''  },
