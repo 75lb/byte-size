@@ -9,7 +9,7 @@
 
 # byte-size
 
-An isomorphic, load-anywhere function to convert a bytes value (e.g. 3456) to a human-readable string ('3.5 kB'). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte) (summarised below) or specify your own custom units.
+An isomorphic, load-anywhere function to convert a bytes value (e.g. `3456`) to a human-readable string (`'3.5 kB'`). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte) (summarised below) or specify your own custom units.
 
 Value  | Metric        | Metric (octet) |
 -----  | ------------- | -------------- |
@@ -98,17 +98,17 @@ Define custom units by passing an object containing one or more additional conve
 <a name="exp_module_byte-size--byteSize"></a>
 
 ### byteSize(bytes, [options]) ⇒ <code>object</code> ⏏
-Returns an object with the spec `{ value: string, unit: string, long: string }`. The return object defines a `toString` method meaning it can be used in any string context.
+Returns an object with the spec `{ value: string, unit: string, long: string }`. The returned object defines a `toString` method meaning it can be used in any string context.
 
 **Kind**: Exported function  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| bytes | <code>number</code> |  | the bytes value to convert. |
-| [options] | <code>object</code> |  | optional config. |
-| [options.precision] | <code>number</code> | <code>1</code> | number of decimal places. |
+| bytes | <code>number</code> |  | The bytes value to convert. |
+| [options] | <code>object</code> |  | Optional config. |
+| [options.precision] | <code>number</code> | <code>1</code> | Number of decimal places. |
 | [options.units] | <code>string</code> | <code>&quot;metric&quot;</code> | Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. |
-| [options.customUnits] | <code>object</code> |  | Custom units table. |
+| [options.customUnits] | <code>object</code> |  | An object containing one or more custom unit lookup tables. |
 
 
 ## Load anywhere
