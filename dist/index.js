@@ -9,6 +9,7 @@
    */
 
   let defaultOptions = {};
+  const _options = new WeakMap();
 
   class ByteSize {
     constructor (bytes, options) {
@@ -16,7 +17,7 @@
         units: 'metric',
         precision: 1
       }, defaultOptions, options);
-      this.options = options;
+      _options.set(this, options);
 
       const tables = {
         metric: [
@@ -89,7 +90,8 @@
     }
 
     toString () {
-      return this.options.toStringFn ? this.options.toStringFn.bind(this)() : `${this.value} ${this.unit}`
+      const options = _options.get(this);
+      return options.toStringFn ? options.toStringFn.bind(this)() : `${this.value} ${this.unit}`
     }
   }
 
@@ -109,7 +111,8 @@
   }
 
   /**
-   * @param [options] {object} - Default options.
+   * Set the default `byteSize` options for the duration of the process.
+   * @param [options] {object} - A `byteSize` options object.
    */
   byteSize.defaultOptions = function (options) {
     defaultOptions = options;

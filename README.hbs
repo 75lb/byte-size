@@ -44,11 +44,22 @@ By default, `byteSize` converts the input number to a human readable string with
 { value: '1.6', unit: 'kB', long: 'kilobytes' }
 ```
 
-The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context (you can override the default behaviour by setting [`options.toStringFn`](https://github.com/75lb/byte-size#bytesizebytes-options--object-)).
+The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context.
 
 ```js
 > `Filesize: ${byteSize(12400)}`
 'Filesize: 12.4 kB'
+```
+
+Override the default `toString` behaviour by setting [`options.toStringFn`](https://github.com/75lb/byte-size#bytesizebytes-options--object-).
+
+```js
+> function toStringFn () {
+    return `**${this.value}${this.unit}**`
+  }
+
+> `Filesize: ${byteSize(12400, { toStringFn })}`
+'Filesize: **12.4kB**'
 ```
 
 Beside the default of `metric`, there are three other built-in units available: `metric_octet`, `iec` and `iec_octet`.
@@ -90,6 +101,29 @@ Define custom units by passing an object containing one or more additional conve
 
 > `${value}${unit}`
 '10.0K'
+```
+
+Override the built-in defaults for the duration of the process by passing an options object to `byteSize.defaultOptions`. This results in cleaner code in cases where `byteSize` is used often with the same options.
+
+```js
+> byteSize.defaultOptions({
+  units: 'simple',
+  precision: 2,
+  customUnits: {
+    simple: [
+      { from: 0, to: 1e3, unit: '' },
+      { from: 1e3, to: 1e6, unit: 'k' },
+      { from: 1e6, to: 1e9, unit: 'm' },
+      { from: 1e9, to: 1e12, unit: 'bn' },
+    ]
+  },
+  toStringFn: function () {
+    return this.value + this.unit
+  }
+})
+
+> [2400, 16400, 3991200].map(byteSize).join(', ')
+2.40k, 16.40k, 3.99m
 ```
 
 {{>main}}
