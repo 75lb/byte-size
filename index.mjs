@@ -91,9 +91,10 @@ class ByteSize {
  * Returns an object with the spec `{ value: string, unit: string, long: string }`. The returned object defines a `toString` method meaning it can be used in any string context.
  * @param {number} - The bytes value to convert.
  * @param [options] {object} - Optional config.
- * @param [options.precision=1] {number} - Number of decimal places.
- * @param [options.units=metric] {string} - Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`.
+ * @param [options.precision] {number} - Number of decimal places. Defaults to `1`.
+ * @param [options.units] {string} - Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. Defaults to `metric`.
  * @param [options.customUnits] {object} - An object containing one or more custom unit lookup tables.
+ * @param [options.toStringFn] {function} - A `toString` function to override the default.
  * @returns {object}
  * @alias module:byte-size
  */
@@ -101,6 +102,9 @@ function byteSize (bytes, options) {
   return new ByteSize(bytes, options)
 }
 
+/**
+ * @param [options] {object} - Default options.
+ */
 byteSize.defaultOptions = function (options) {
   defaultOptions = options
 }

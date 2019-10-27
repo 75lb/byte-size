@@ -44,7 +44,7 @@ By default, `byteSize` converts the input number to a human readable string with
 { value: '1.6', unit: 'kB', long: 'kilobytes' }
 ```
 
-The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context.
+The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context (you can override the default behaviour by setting [`options.toStringFn`](https://github.com/75lb/byte-size#bytesizebytes-options--object-)).
 
 ```js
 > `Filesize: ${byteSize(12400)}`
@@ -95,6 +95,11 @@ Define custom units by passing an object containing one or more additional conve
 <a name="module_byte-size"></a>
 
 ## byte-size
+
+* [byte-size](#module_byte-size)
+    * [byteSize(bytes, [options])](#exp_module_byte-size--byteSize) ⇒ <code>object</code> ⏏
+        * [.defaultOptions([options])](#module_byte-size--byteSize.defaultOptions)
+
 <a name="exp_module_byte-size--byteSize"></a>
 
 ### byteSize(bytes, [options]) ⇒ <code>object</code> ⏏
@@ -102,13 +107,23 @@ Returns an object with the spec `{ value: string, unit: string, long: string }`.
 
 **Kind**: Exported function  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| bytes | <code>number</code> |  | The bytes value to convert. |
-| [options] | <code>object</code> |  | Optional config. |
-| [options.precision] | <code>number</code> | <code>1</code> | Number of decimal places. |
-| [options.units] | <code>string</code> | <code>&quot;metric&quot;</code> | Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. |
-| [options.customUnits] | <code>object</code> |  | An object containing one or more custom unit lookup tables. |
+| Param | Type | Description |
+| --- | --- | --- |
+| bytes | <code>number</code> | The bytes value to convert. |
+| [options] | <code>object</code> | Optional config. |
+| [options.precision] | <code>number</code> | Number of decimal places. Defaults to `1`. |
+| [options.units] | <code>string</code> | Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. Defaults to `metric`. |
+| [options.customUnits] | <code>object</code> | An object containing one or more custom unit lookup tables. |
+| [options.toStringFn] | <code>function</code> | A `toString` function to override the default. |
+
+<a name="module_byte-size--byteSize.defaultOptions"></a>
+
+#### byteSize.defaultOptions([options])
+**Kind**: static method of [<code>byteSize</code>](#exp_module_byte-size--byteSize)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [options] | <code>object</code> | Default options. |
 
 
 ## Load anywhere

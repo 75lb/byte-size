@@ -44,7 +44,7 @@ By default, `byteSize` converts the input number to a human readable string with
 { value: '1.6', unit: 'kB', long: 'kilobytes' }
 ```
 
-The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context.
+The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context (you can override the default behaviour by setting [`options.toStringFn`](https://github.com/75lb/byte-size#bytesizebytes-options--object-)).
 
 ```js
 > `Filesize: ${byteSize(12400)}`
