@@ -51,12 +51,12 @@ The object returned by `byteSize` defines a `toString` method therefore can be u
 'Filesize: 12.4 kB'
 ```
 
-Override the default `toString` behaviour by setting [`options.toStringFn`](https://github.com/75lb/byte-size#bytesizebytes-options--object-).
+Override the default `toString` behaviour by setting [`options.toStringFn`](#bytesizebytes-options--object-).
 
 ```js
 > function toStringFn () {
-    return `**${this.value}${this.unit}**`
-  }
+  return `**${this.value}${this.unit}**`
+}
 
 > `Filesize: ${byteSize(12400, { toStringFn })}`
 'Filesize: **12.4kB**'
@@ -85,7 +85,7 @@ You can adjust the `precision`.
 { value: '2', unit: 'KiB', long: 'kibibytes' }
 ```
 
-Define custom units by passing an object containing one or more additional conversion tables to `options.customUnits`.
+Define custom units by passing an object containing one or more additional conversion tables to `options.customUnits`. In `options.units`, specify the name of a property from the `customUnits` object.
 
 ```js
 > const customUnits = {
@@ -103,7 +103,7 @@ Define custom units by passing an object containing one or more additional conve
 '10.0K'
 ```
 
-Override the built-in defaults for the duration of the process by passing an options object to `byteSize.defaultOptions`. This results in cleaner code in cases where `byteSize` is used often with the same options.
+Override the built-in defaults for the duration of the process by passing an options object to `byteSize.defaultOptions()`. This results in cleaner code in cases where `byteSize` is used often with the same options.
 
 ```js
 > byteSize.defaultOptions({
@@ -123,7 +123,7 @@ Override the built-in defaults for the duration of the process by passing an opt
 })
 
 > [2400, 16400, 3991200].map(byteSize).join(', ')
-2.40k, 16.40k, 3.99m
+'2.40k, 16.40k, 3.99m'
 ```
 
 <a name="module_byte-size"></a>
@@ -132,7 +132,7 @@ Override the built-in defaults for the duration of the process by passing an opt
 
 * [byte-size](#module_byte-size)
     * [byteSize(bytes, [options])](#exp_module_byte-size--byteSize) ⇒ <code>object</code> ⏏
-        * [.defaultOptions([options])](#module_byte-size--byteSize.defaultOptions)
+        * [.defaultOptions(options)](#module_byte-size--byteSize.defaultOptions)
 
 <a name="exp_module_byte-size--byteSize"></a>
 
@@ -152,14 +152,14 @@ Returns an object with the spec `{ value: string, unit: string, long: string }`.
 
 <a name="module_byte-size--byteSize.defaultOptions"></a>
 
-#### byteSize.defaultOptions([options])
+#### byteSize.defaultOptions(options)
 Set the default `byteSize` options for the duration of the process.
 
 **Kind**: static method of [<code>byteSize</code>](#exp_module_byte-size--byteSize)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [options] | <code>object</code> | A `byteSize` options object. |
+| options | <code>object</code> | A `byteSize` options object. |
 
 
 ## Load anywhere

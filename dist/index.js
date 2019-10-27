@@ -112,7 +112,7 @@
 
   /**
    * Set the default `byteSize` options for the duration of the process.
-   * @param [options] {object} - A `byteSize` options object.
+   * @param options {object} - A `byteSize` options object.
    */
   byteSize.defaultOptions = function (options) {
     defaultOptions = options;
