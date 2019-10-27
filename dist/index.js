@@ -8,12 +8,15 @@
    * @module byte-size
    */
 
+  let defaultOptions = {};
+
   class ByteSize {
     constructor (bytes, options) {
       options = Object.assign({
         units: 'metric',
         precision: 1
-      }, options);
+      }, defaultOptions, options);
+      this.options = options;
 
       const tables = {
         metric: [
@@ -86,7 +89,7 @@
     }
 
     toString () {
-      return `${this.value} ${this.unit}`.trim()
+      return this.options.toStringFn ? this.options.toStringFn.bind(this)() : `${this.value} ${this.unit}`
     }
   }
 
@@ -103,6 +106,10 @@
   function byteSize (bytes, options) {
     return new ByteSize(bytes, options)
   }
+
+  byteSize.defaultOptions = function (options) {
+    defaultOptions = options;
+  };
 
   return byteSize;
 

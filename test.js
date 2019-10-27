@@ -362,3 +362,45 @@ tom.test('invalid units', function () {
     /invalid units/i
   )
 })
+
+tom.test('options.toStringFn', async function () {
+  const result = byteSize(2500, {
+    toStringFn: function () { return 'test' }
+  })
+  const str = `${result}`
+  a.equal(str, 'test')
+})
+
+tom.test('byteSize.defaultOptions', async function () {
+  const defaultOptions = {
+    toStringFn: function () { return 'test' },
+    customUnits: {
+      test: [
+        { from: 0, to: 5000, unit: 'test'  }
+      ]
+    },
+    units: 'test'
+  }
+  byteSize.defaultOptions(defaultOptions)
+  const result = byteSize(2500)
+  a.equal(result.toString(), 'test')
+  a.equal(result.value, '2500')
+  a.equal(result.unit, 'test')
+})
+
+tom.test('byteSize.defaultOptions - override default units', async function () {
+  const defaultOptions = {
+    toStringFn: function () { return 'test' },
+    customUnits: {
+      test: [
+        { from: 0, to: 5000, unit: 'test'  }
+      ]
+    },
+    units: 'iec'
+  }
+  byteSize.defaultOptions(defaultOptions)
+  const result = byteSize(2500)
+  a.equal(result.toString(), 'test')
+  a.equal(result.value, '2.4')
+  a.equal(result.unit, 'KiB')
+})

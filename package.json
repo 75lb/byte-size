@@ -40,7 +40,7 @@
     "coveralls": "^3.0.7",
     "jsdoc-to-markdown": "^5.0.2",
     "nyc": "^14.1.1",
-    "rollup": "^1.25.2",
+    "rollup": "^1.26.0",
     "test-runner": "^0.6.0"
   },
   "standard": {
