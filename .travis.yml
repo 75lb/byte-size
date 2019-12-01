@@ -1,11 +1,5 @@
 language: node_js
-matrix:
-  include:
-    - node_js: 13
-      script: npm run test:esm && npm run test:web
-    - node_js: 12
-      script: npm run test:esm && npm run test:web
-    - node_js: 10
-      script: npm run test:esm && npm run test:web
-    - node_js: 8
-      script: npm run test:esm
+node_js:
+  - 10
+  - 12
+  - 13
