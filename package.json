@@ -44,8 +44,8 @@
     "esm-runner": "^0.3.2",
     "isomorphic-assert": "^0.1.1",
     "jsdoc-to-markdown": "^5.0.3",
-    "rollup": "^1.27.6",
-    "test-object-model": "^0.5.7"
+    "rollup": "^1.27.8",
+    "test-object-model": "^0.5.9"
   },
   "standard": {
     "ignore": [
