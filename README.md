@@ -194,4 +194,4 @@ Old browser (adds `window.byteSize`):
 
 &copy; 2014-20 Lloyd Brookes \<75pound@gmail.com\>.
 
-Isomorphic test suite by [esm-runner](https://github.com/test-runner-js/esm-runner) and [web-runner](https://github.com/test-runner-js/web-runner). Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+Isomorphic test suite by [test-runner](https://github.com/test-runner-js/test-runner) and [web-runner](https://github.com/test-runner-js/web-runner). Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
