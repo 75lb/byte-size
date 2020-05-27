@@ -39,12 +39,12 @@
     "dist": "rollup -f umd -n byteSize -o dist/index.js index.mjs"
   },
   "devDependencies": {
-    "@test-runner/web": "^0.3.3",
-    "coveralls": "^3.0.9",
+    "@test-runner/web": "^0.3.4",
+    "coveralls": "^3.1.0",
     "esm-runner": "^0.3.4",
     "isomorphic-assert": "^0.1.1",
     "jsdoc-to-markdown": "^5.0.3",
-    "rollup": "^1.27.11",
+    "rollup": "^2.10.9",
     "test-object-model": "^0.6.1"
   },
   "standard": {
