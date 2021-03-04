@@ -8,7 +8,7 @@
       "url": "http://repejota.com"
     }
   ],
-  "version": "7.0.0",
+  "version": "7.0.1",
   "main": "dist/index.js",
   "license": "MIT",
   "engines": {
