@@ -167,13 +167,13 @@ Set the default `byteSize` options for the duration of the process.
 
 This library is compatible with Node.js, the Web and any style of module loader. It can be loaded anywhere, natively without transpilation.
 
-Node.js:
+Node.js (CommonJS):
 
 ```js
 const byteSize = require('byte-size')
 ```
 
-Within Node.js with ECMAScript Module support enabled:
+Node.js (ECMAScript Module):
 
 ```js
 import byteSize from 'byte-size'
@@ -185,10 +185,10 @@ Within a modern browser ECMAScript Module:
 import byteSize from './node_modules/byte-size/index.mjs'
 ```
 
-Old browser (adds `window.byteSize`):
+Browser global (adds `window.byteSize`):
 
 ```html
-<script nomodule src="./node_modules/byte-size/dist/index.js"></script>
+<script src="./node_modules/byte-size/dist/index.js"></script>
 ```
 
 * * *

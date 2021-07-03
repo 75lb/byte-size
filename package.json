@@ -21,7 +21,7 @@
   "repository": "https://github.com/75lb/byte-size",
   "files": [
     "index.mjs",
-    "dist/index.js"
+    "dist"
   ],
   "keywords": [
     "convert",
@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "test": "npm run dist && npm run test:esm",
-    "test:esm": "test-runner test.mjs",
+    "test:esm": "test-runner --view.hide-skips test.mjs",
     "test:web": "web-runner test.mjs",
     "docs": "jsdoc2md -t README.hbs dist/index.js > README.md",
     "cover": "c8 npm test && c8 report --reporter=text-lcov | coveralls",
