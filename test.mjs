@@ -387,6 +387,7 @@ tom.test('byteSize.defaultOptions', async function () {
   a.equal(result.toString(), 'test')
   a.equal(result.value, '2500')
   a.equal(result.unit, 'test')
+  byteSize.defaultOptions({})
 })
 
 tom.test('byteSize.defaultOptions - override default units', async function () {
@@ -404,6 +405,19 @@ tom.test('byteSize.defaultOptions - override default units', async function () {
   a.equal(result.toString(), 'test')
   a.equal(result.value, '2.4')
   a.equal(result.unit, 'KiB')
+  byteSize.defaultOptions({})
+})
+
+tom.test('options.locale: metric 1000', function () {
+  const result = byteSize(1000, { locale: 'de-DE' })
+  a.equal(result.value, '1,0')
+  a.equal(result.unit, 'kB')
+})
+
+tom.test('options.locale with precision 2', function () {
+  const result = byteSize(1500, { locale: 'de-DE', precision: 2 })
+  a.equal(result.value, '1,50')
+  a.equal(result.unit, 'kB')
 })
 
 export default tom

@@ -62,7 +62,8 @@
     constructor (bytes, options) {
       options = Object.assign({
         units: 'metric',
-        precision: 1
+        precision: 1,
+        locale: undefined // Default to the user's system locale
       }, defaultOptions, options);
       _options.set(this, options);
 
@@ -74,9 +75,14 @@
       if (table) {
         const units = table.find(u => bytes >= u.from && bytes < u.to);
         if (units) {
+          const defaultFormat = new Intl.NumberFormat(options.locale, {
+            style: 'decimal',
+            minimumFractionDigits: options.precision,
+            maximumFractionDigits: options.precision
+          });
           const value = units.from === 0
             ? prefix + bytes
-            : prefix + (bytes / units.from).toFixed(options.precision);
+            : prefix + defaultFormat.format(bytes / units.from);
           this.value = value;
           this.unit = units.unit;
           this.long = units.long;
