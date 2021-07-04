@@ -30,7 +30,7 @@
     "test": "npm run dist && npm run test:esm && npm run test:web",
     "test:esm": "test-runner --view.hide-skips test.mjs",
     "test:web": "web-runner test.mjs",
-    "docs": "jsdoc2md -t README.hbs dist/index.js > README.md",
+    "docs": "jsdoc2md -c jsdoc.conf -t README.hbs index.mjs > README.md",
     "cover": "c8 npm test && c8 report --reporter=text-lcov | coveralls",
     "dist": "rollup -c"
   },
