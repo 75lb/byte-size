@@ -2,7 +2,7 @@
 [![npm module downloads](https://badgen.net/npm/dt/byte-size)](https://www.npmjs.org/package/byte-size)
 [![Gihub repo dependents](https://badgen.net/github/dependents-repo/75lb/byte-size)](https://github.com/75lb/byte-size/network/dependents?dependent_type=REPOSITORY)
 [![Gihub package dependents](https://badgen.net/github/dependents-pkg/75lb/byte-size)](https://github.com/75lb/byte-size/network/dependents?dependent_type=PACKAGE)
-[![Build Status](https://travis-ci.org/75lb/byte-size.svg?branch=master)](https://travis-ci.org/75lb/byte-size)
+[![Node.js CI](https://github.com/75lb/byte-size/actions/workflows/node.js.yml/badge.svg)](https://github.com/75lb/byte-size/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/75lb/byte-size/badge.svg)](https://coveralls.io/github/75lb/byte-size)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 

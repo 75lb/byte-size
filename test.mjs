@@ -1,9 +1,9 @@
-import TestRunner from 'test-runner'
-import assert from 'assert'
+import TestObjectModel from '@test-runner/tom'
+import getAssert from 'isomorphic-assert'
 import byteSize from 'byte-size'
-const a = assert.strict
 
-const tom = new TestRunner.Tom()
+const a = await getAssert()
+const tom = new TestObjectModel()
 
 tom.test('metric 10', function () {
   const result = byteSize(10)
