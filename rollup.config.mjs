@@ -1,6 +1,6 @@
 export default [
   {
-    input: 'index.mjs',
+    input: 'index.js',
     output: {
       file: 'dist/index.js',
       format: 'umd',
@@ -10,7 +10,7 @@ export default [
     plugins: []
   },
   {
-    input: 'index.mjs',
+    input: 'index.js',
     output: {
       file: 'dist/index.cjs',
       format: 'cjs',
