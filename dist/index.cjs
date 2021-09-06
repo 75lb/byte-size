@@ -106,7 +106,7 @@ class ByteSize {
  * @param [options.units] {string} - Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. Defaults to `metric`.
  * @param [options.customUnits] {object} - An object containing one or more custom unit lookup tables.
  * @param [options.toStringFn] {function} - A `toString` function to override the default.
- * @param [options.locale] {string|string[]} - The locale to use for number formatting (e.g. `'de-DE'`). Defaults to your system locale. Passed directed into [Intl.NumberFormat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).
+ * @param [options.locale] {string|string[]} - *Node >=13 or modern browser only - on earlier platforms this option is ignored*. The locale to use for number formatting (e.g. `'de-DE'`). Defaults to your system locale. Passed directed into [Intl.NumberFormat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).
  * @returns {object}
  * @alias module:byte-size
  */
