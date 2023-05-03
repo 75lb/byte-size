@@ -29,20 +29,16 @@
   ],
   "scripts": {
     "test": "npm run dist && npm run test:ci",
-    "test:ci": "npm run test:esm && npm run test:web",
+    "test:ci": "npm run test:esm",
     "test:esm": "test-runner --view.hide-skips test.js",
-    "test:web": "web-runner --view.hide-skips test.js",
-    "docs": "jsdoc2md -c jsdoc.conf -t README.hbs index.js > README.md",
+    "docs": "jsdoc2md -t README.hbs index.js > README.md",
     "cover": "c8 npm test && c8 report --reporter=text-lcov | coveralls",
     "dist": "rollup -c"
   },
   "devDependencies": {
-    "@test-runner/web": "^0.4.4",
-    "coveralls": "^3.1.1",
-    "isomorphic-assert": "^1.0.0",
-    "jsdoc-to-markdown": "^7.0.1",
-    "rollup": "^2.56.3",
-    "test-runner": "^0.9.8"
+    "jsdoc-to-markdown": "^8.0.0",
+    "rollup": "^3.21.3",
+    "test-runner": "^0.10.1"
   },
   "standard": {
     "ignore": [
