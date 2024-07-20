@@ -75,7 +75,7 @@ class ByteSize {
           maximumFractionDigits: options.precision
         })
         const value = units.from === 0
-          ? prefix + bytes
+          ? prefix + defaultFormat.format(bytes)
           : prefix + defaultFormat.format(bytes / units.from)
         this.value = value
         this.unit = units.unit
