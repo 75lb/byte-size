@@ -71,7 +71,6 @@ class ByteSize {
       if (units) {
         const defaultFormat = new Intl.NumberFormat(options.locale, {
           style: 'decimal',
-          minimumFractionDigits: options.precision,
           maximumFractionDigits: options.precision
         })
         const value = units.from === 0

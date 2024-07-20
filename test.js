@@ -13,17 +13,17 @@ tom.test('metric 10', function () {
 })
 tom.test('metric 1000', function () {
   const result = byteSize(1000)
-  a.equal(result.value, '1.0')
+  a.equal(result.value, '1')
   a.equal(result.unit, 'kB')
 })
 tom.test('metric -1000', function () {
   const result = byteSize(-1000)
-  a.equal(result.value, '-1.0')
+  a.equal(result.value, '-1')
   a.equal(result.unit, 'kB')
 })
 tom.test('metric 10000', function () {
   const result = byteSize(10000)
-  a.equal(result.value, '10.0')
+  a.equal(result.value, '10')
   a.equal(result.unit, 'kB')
 })
 tom.test('metric 34560000', function () {
@@ -79,17 +79,17 @@ tom.test('metric_octet 10', function () {
 })
 tom.test('metric_octet 1000', function () {
   const result = byteSize(1000, { units: 'metric_octet' })
-  a.equal(result.value, '1.0')
+  a.equal(result.value, '1')
   a.equal(result.unit, 'ko')
 })
 tom.test('metric_octet -1000', function () {
   const result = byteSize(-1000, { units: 'metric_octet' })
-  a.equal(result.value, '-1.0')
+  a.equal(result.value, '-1')
   a.equal(result.unit, 'ko')
 })
 tom.test('metric_octet 10000', function () {
   const result = byteSize(10000, { units: 'metric_octet' })
-  a.equal(result.value, '10.0')
+  a.equal(result.value, '10')
   a.equal(result.unit, 'ko')
 })
 tom.test('metric_octet 34560000', function () {
@@ -145,12 +145,12 @@ tom.test('iec 10', function () {
 })
 tom.test('iec 1000', function () {
   const result = byteSize(1000, { units: 'iec' })
-  a.equal(result.value, '1000')
+  a.equal(result.value, '1,000')
   a.equal(result.unit, 'B')
 })
 tom.test('iec -1000', function () {
   const result = byteSize(-1000, { units: 'iec' })
-  a.equal(result.value, '-1000')
+  a.equal(result.value, '-1,000')
   a.equal(result.unit, 'B')
 })
 tom.test('iec 10000', function () {
@@ -160,7 +160,7 @@ tom.test('iec 10000', function () {
 })
 tom.test('iec 34560000', function () {
   const result = byteSize(34560000, { units: 'iec' })
-  a.equal(result.value, '33.0')
+  a.equal(result.value, '33')
   a.equal(result.unit, 'MiB')
 })
 tom.test('iec 34560000000', function () {
@@ -180,7 +180,7 @@ tom.test('iec 34560000000000000', function () {
 })
 tom.test('iec 34560000000000000000', function () {
   const result = byteSize(34560000000000000000, { units: 'iec' })
-  a.equal(result.value, '30.0')
+  a.equal(result.value, '30')
   a.equal(result.unit, 'EiB')
 })
 tom.test('iec 34560000000000000000000', function () {
@@ -211,12 +211,12 @@ tom.test('iec_octet 10', function () {
 })
 tom.test('iec_octet 1000', function () {
   const result = byteSize(1000, { units: 'iec_octet' })
-  a.equal(result.value, '1000')
+  a.equal(result.value, '1,000')
   a.equal(result.unit, 'o')
 })
 tom.test('iec_octet -1000', function () {
   const result = byteSize(-1000, { units: 'iec_octet' })
-  a.equal(result.value, '-1000')
+  a.equal(result.value, '-1,000')
   a.equal(result.unit, 'o')
 })
 tom.test('iec_octet 10000', function () {
@@ -226,7 +226,7 @@ tom.test('iec_octet 10000', function () {
 })
 tom.test('iec_octet 34560000', function () {
   const result = byteSize(34560000, { units: 'iec_octet' })
-  a.equal(result.value, '33.0')
+  a.equal(result.value, '33')
   a.equal(result.unit, 'Mio')
 })
 tom.test('iec_octet 34560000000', function () {
@@ -246,7 +246,7 @@ tom.test('iec_octet 34560000000000000', function () {
 })
 tom.test('iec_octet 34560000000000000000', function () {
   const result = byteSize(34560000000000000000, { units: 'iec_octet' })
-  a.equal(result.value, '30.0')
+  a.equal(result.value, '30')
   a.equal(result.unit, 'Eio')
 })
 tom.test('iec_octet 34560000000000000000000', function () {
@@ -293,27 +293,27 @@ tom.test('precision', function () {
 })
 tom.test('precision 2', function () {
   const result = byteSize(1500, { precision: 2 })
-  a.equal(result.value, '1.50')
+  a.equal(result.value, '1.5')
   a.equal(result.unit, 'kB')
 })
 tom.test('precision 3', function () {
   const result = byteSize(-1500, { precision: 2 })
-  a.equal(result.value, '-1.50')
+  a.equal(result.value, '-1.5')
   a.equal(result.unit, 'kB')
 })
 tom.test('precision 4', function () {
   const result = byteSize(1500000, { precision: 5 })
-  a.equal(result.value, '1.50000')
+  a.equal(result.value, '1.5')
   a.equal(result.unit, 'MB')
 })
 
 tom.test('toString 1', function () {
   const result = byteSize(1000).toString()
-  a.equal(result, '1.0 kB')
+  a.equal(result, '1 kB')
 })
 tom.test('toString 2', function () {
   const result = byteSize(-1000).toString()
-  a.equal(result, '-1.0 kB')
+  a.equal(result, '-1 kB')
 })
 
 tom.test('use custom table 1', function () {
@@ -340,7 +340,7 @@ tom.test('use custom table 2', function () {
     ]
   }
   const result = byteSize(10000, { customUnits, units: 'test' })
-  a.equal(result.value, '10.0')
+  a.equal(result.value, '10')
   a.equal(result.unit, 'K')
 })
 
@@ -386,7 +386,7 @@ tom.test('byteSize.defaultOptions', async function () {
   byteSize.defaultOptions(defaultOptions)
   const result = byteSize(2500)
   a.equal(result.toString(), 'test')
-  a.equal(result.value, '2500')
+  a.equal(result.value, '2,500')
   a.equal(result.unit, 'test')
   byteSize.defaultOptions({})
 })
@@ -415,9 +415,9 @@ tom.test('options.locale: metric 1000', function () {
 
   /* Intl is expected to work in Node v13+ or modern browser only */
   if (isNode13Plus) {
-    a.equal(result.value, '1,0')
+    a.equal(result.value, '1')
   } else {
-    a.equal(result.value, '1.0')
+    a.equal(result.value, '1')
   }
 
   return result.value
@@ -429,12 +429,18 @@ tom.test('options.locale with precision 2', function () {
 
   /* Intl is expected to work in Node v13+ or modern browser only */
   if (isNode13Plus) {
-    a.equal(result.value, '1,50')
+    a.equal(result.value, '1,5')
   } else {
-    a.equal(result.value, '1.50')
+    a.equal(result.value, '1.5')
   }
 
   return result.value
+})
+
+tom.test('small number with precision', function () {
+  const result = byteSize(15.123456789, { precision: 3 })
+  a.equal(result.value, '15.123')
+  a.equal(result.unit, 'B')
 })
 
 export default tom
