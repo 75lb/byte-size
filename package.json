@@ -1,9 +1,12 @@
 {
   "name": "byte-size",
-  "author": "Lloyd Brookes <75pound@gmail.com>",
+  "author": "Lloyd Brookes <opensource@75lb.com>",
   "version": "9.0.0",
   "description": "Convert a bytes or octets value (e.g. 34565346) to a human-readable string ('34.6 MB'). Choose between metric or IEC units.",
-  "repository": "https://github.com/75lb/byte-size",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/75lb/byte-size.git"
+  },
   "type": "module",
   "exports": {
     "import": "./index.js",
@@ -29,19 +32,24 @@
   ],
   "scripts": {
     "test": "npm run dist && npm run test:ci",
-    "test:ci": "test-runner --view.hide-skips test.js",
-    "docs": "jsdoc2md -t README.hbs index.js > README.md",
-    "dist": "rollup -c"
+    "test:ci": "75lb-nature test-runner test*.js",
+    "docs": "75lb-nature jsdoc2md -t README.hbs index.js > README.md",
+    "dist": "75lb-nature cjs-build index.js"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^8.0.2",
-    "rollup": "^4.19.0",
-    "test-runner": "^0.11.0"
   },
   "standard": {
     "ignore": [
       "dist"
     ]
+  },
+  "peerDependencies": {
+    "@75lb/nature": "latest"
+  },
+  "peerDependenciesMeta": {
+    "@75lb/nature": {
+      "optional": true
+    }
   },
   "contributors": [
     {

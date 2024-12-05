@@ -1,322 +1,320 @@
-import TestRunner from 'test-runner'
-import { strict as a } from 'node:assert'
 import byteSize from 'byte-size'
+import { strict as a } from 'assert'
 
-const tom = new TestRunner.Tom()
-
+const [test, only, skip] = [new Map(), new Map(), new Map()]
 const isNode13Plus = Number(process.versions.node.split('.')[0]) >= 13
 
-tom.test('metric 10', function () {
+test.set('metric 10', function () {
   const result = byteSize(10)
   a.equal(result.value, '10')
   a.equal(result.unit, 'B')
 })
-tom.test('metric 1000', function () {
+test.set('metric 1000', function () {
   const result = byteSize(1000)
   a.equal(result.value, '1')
   a.equal(result.unit, 'kB')
 })
-tom.test('metric -1000', function () {
+test.set('metric -1000', function () {
   const result = byteSize(-1000)
   a.equal(result.value, '-1')
   a.equal(result.unit, 'kB')
 })
-tom.test('metric 10000', function () {
+test.set('metric 10000', function () {
   const result = byteSize(10000)
   a.equal(result.value, '10')
   a.equal(result.unit, 'kB')
 })
-tom.test('metric 34560000', function () {
+test.set('metric 34560000', function () {
   const result = byteSize(34560000)
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'MB')
 })
-tom.test('metric 34560000000', function () {
+test.set('metric 34560000000', function () {
   const result = byteSize(34560000000)
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'GB')
 })
-tom.test('metric 34560000000000', function () {
+test.set('metric 34560000000000', function () {
   const result = byteSize(34560000000000)
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'TB')
 })
-tom.test('metric 34560000000000000', function () {
+test.set('metric 34560000000000000', function () {
   const result = byteSize(34560000000000000)
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'PB')
 })
-tom.test('metric 34560000000000000000', function () {
+test.set('metric 34560000000000000000', function () {
   const result = byteSize(34560000000000000000)
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'EB')
 })
-tom.test('metric 34560000000000000000000', function () {
+test.set('metric 34560000000000000000000', function () {
   const result = byteSize(34560000000000000000000)
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'ZB')
 })
-tom.test('metric 34560000000000000000000000', function () {
+test.set('metric 34560000000000000000000000', function () {
   const result = byteSize(34560000000000000000000000)
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'YB')
 })
-tom.test('metric 34560000000000000000000000000', function () {
+test.set('metric 34560000000000000000000000000', function () {
   const result = byteSize(34560000000000000000000000000)
   a.equal(result.value, '3.456e+28')
   a.equal(result.unit, '')
 })
-tom.test('metric -34560000000000000000000000000', function () {
+test.set('metric -34560000000000000000000000000', function () {
   const result = byteSize(-34560000000000000000000000000)
   a.equal(result.value, '-3.456e+28')
   a.equal(result.unit, '')
 })
 
-tom.test('metric_octet 10', function () {
+test.set('metric_octet 10', function () {
   const result = byteSize(10, { units: 'metric_octet' })
   a.equal(result.value, '10')
   a.equal(result.unit, 'o')
 })
-tom.test('metric_octet 1000', function () {
+test.set('metric_octet 1000', function () {
   const result = byteSize(1000, { units: 'metric_octet' })
   a.equal(result.value, '1')
   a.equal(result.unit, 'ko')
 })
-tom.test('metric_octet -1000', function () {
+test.set('metric_octet -1000', function () {
   const result = byteSize(-1000, { units: 'metric_octet' })
   a.equal(result.value, '-1')
   a.equal(result.unit, 'ko')
 })
-tom.test('metric_octet 10000', function () {
+test.set('metric_octet 10000', function () {
   const result = byteSize(10000, { units: 'metric_octet' })
   a.equal(result.value, '10')
   a.equal(result.unit, 'ko')
 })
-tom.test('metric_octet 34560000', function () {
+test.set('metric_octet 34560000', function () {
   const result = byteSize(34560000, { units: 'metric_octet' })
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'Mo')
 })
-tom.test('metric_octet 34560000000', function () {
+test.set('metric_octet 34560000000', function () {
   const result = byteSize(34560000000, { units: 'metric_octet' })
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'Go')
 })
-tom.test('metric_octet 34560000000000', function () {
+test.set('metric_octet 34560000000000', function () {
   const result = byteSize(34560000000000, { units: 'metric_octet' })
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'To')
 })
-tom.test('metric_octet 34560000000000000', function () {
+test.set('metric_octet 34560000000000000', function () {
   const result = byteSize(34560000000000000, { units: 'metric_octet' })
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'Po')
 })
-tom.test('metric_octet 34560000000000000000', function () {
+test.set('metric_octet 34560000000000000000', function () {
   const result = byteSize(34560000000000000000, { units: 'metric_octet' })
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'Eo')
 })
-tom.test('metric_octet 34560000000000000000000', function () {
+test.set('metric_octet 34560000000000000000000', function () {
   const result = byteSize(34560000000000000000000, { units: 'metric_octet' })
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'Zo')
 })
-tom.test('metric_octet 34560000000000000000000000', function () {
+test.set('metric_octet 34560000000000000000000000', function () {
   const result = byteSize(34560000000000000000000000, { units: 'metric_octet' })
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'Yo')
 })
-tom.test('metric_octet 34560000000000000000000000000', function () {
+test.set('metric_octet 34560000000000000000000000000', function () {
   const result = byteSize(34560000000000000000000000000, { units: 'metric_octet' })
   a.equal(result.value, '3.456e+28')
   a.equal(result.unit, '')
 })
-tom.test('metric_octet -34560000000000000000000000000', function () {
+test.set('metric_octet -34560000000000000000000000000', function () {
   const result = byteSize(-34560000000000000000000000000, { units: 'metric_octet' })
   a.equal(result.value, '-3.456e+28')
   a.equal(result.unit, '')
 })
 
-tom.test('iec 10', function () {
+test.set('iec 10', function () {
   const result = byteSize(10, { units: 'iec' })
   a.equal(result.value, '10')
   a.equal(result.unit, 'B')
 })
-tom.test('iec 1000', function () {
+test.set('iec 1000', function () {
   const result = byteSize(1000, { units: 'iec' })
   a.equal(result.value, '1,000')
   a.equal(result.unit, 'B')
 })
-tom.test('iec -1000', function () {
+test.set('iec -1000', function () {
   const result = byteSize(-1000, { units: 'iec' })
   a.equal(result.value, '-1,000')
   a.equal(result.unit, 'B')
 })
-tom.test('iec 10000', function () {
+test.set('iec 10000', function () {
   const result = byteSize(10000, { units: 'iec' })
   a.equal(result.value, '9.8')
   a.equal(result.unit, 'KiB')
 })
-tom.test('iec 34560000', function () {
+test.set('iec 34560000', function () {
   const result = byteSize(34560000, { units: 'iec' })
   a.equal(result.value, '33')
   a.equal(result.unit, 'MiB')
 })
-tom.test('iec 34560000000', function () {
+test.set('iec 34560000000', function () {
   const result = byteSize(34560000000, { units: 'iec' })
   a.equal(result.value, '32.2')
   a.equal(result.unit, 'GiB')
 })
-tom.test('iec 34560000000000', function () {
+test.set('iec 34560000000000', function () {
   const result = byteSize(34560000000000, { units: 'iec' })
   a.equal(result.value, '31.4')
   a.equal(result.unit, 'TiB')
 })
-tom.test('iec 34560000000000000', function () {
+test.set('iec 34560000000000000', function () {
   const result = byteSize(34560000000000000, { units: 'iec' })
   a.equal(result.value, '30.7')
   a.equal(result.unit, 'PiB')
 })
-tom.test('iec 34560000000000000000', function () {
+test.set('iec 34560000000000000000', function () {
   const result = byteSize(34560000000000000000, { units: 'iec' })
   a.equal(result.value, '30')
   a.equal(result.unit, 'EiB')
 })
-tom.test('iec 34560000000000000000000', function () {
+test.set('iec 34560000000000000000000', function () {
   const result = byteSize(34560000000000000000000, { units: 'iec' })
   a.equal(result.value, '29.3')
   a.equal(result.unit, 'ZiB')
 })
-tom.test('iec 34560000000000000000000000', function () {
+test.set('iec 34560000000000000000000000', function () {
   const result = byteSize(34560000000000000000000000, { units: 'iec' })
   a.equal(result.value, '28.6')
   a.equal(result.unit, 'YiB')
 })
-tom.test('iec 34560000000000000000000000000', function () {
+test.set('iec 34560000000000000000000000000', function () {
   const result = byteSize(34560000000000000000000000000, { units: 'iec' })
   a.equal(result.value, '3.456e+28')
   a.equal(result.unit, '')
 })
-tom.test('iec -34560000000000000000000000000', function () {
+test.set('iec -34560000000000000000000000000', function () {
   const result = byteSize(-34560000000000000000000000000, { units: 'iec' })
   a.equal(result.value, '-3.456e+28')
   a.equal(result.unit, '')
 })
 
-tom.test('iec_octet 10', function () {
+test.set('iec_octet 10', function () {
   const result = byteSize(10, { units: 'iec_octet' })
   a.equal(result.value, '10')
   a.equal(result.unit, 'o')
 })
-tom.test('iec_octet 1000', function () {
+test.set('iec_octet 1000', function () {
   const result = byteSize(1000, { units: 'iec_octet' })
   a.equal(result.value, '1,000')
   a.equal(result.unit, 'o')
 })
-tom.test('iec_octet -1000', function () {
+test.set('iec_octet -1000', function () {
   const result = byteSize(-1000, { units: 'iec_octet' })
   a.equal(result.value, '-1,000')
   a.equal(result.unit, 'o')
 })
-tom.test('iec_octet 10000', function () {
+test.set('iec_octet 10000', function () {
   const result = byteSize(10000, { units: 'iec_octet' })
   a.equal(result.value, '9.8')
   a.equal(result.unit, 'Kio')
 })
-tom.test('iec_octet 34560000', function () {
+test.set('iec_octet 34560000', function () {
   const result = byteSize(34560000, { units: 'iec_octet' })
   a.equal(result.value, '33')
   a.equal(result.unit, 'Mio')
 })
-tom.test('iec_octet 34560000000', function () {
+test.set('iec_octet 34560000000', function () {
   const result = byteSize(34560000000, { units: 'iec_octet' })
   a.equal(result.value, '32.2')
   a.equal(result.unit, 'Gio')
 })
-tom.test('iec_octet 34560000000000', function () {
+test.set('iec_octet 34560000000000', function () {
   const result = byteSize(34560000000000, { units: 'iec_octet' })
   a.equal(result.value, '31.4')
   a.equal(result.unit, 'Tio')
 })
-tom.test('iec_octet 34560000000000000', function () {
+test.set('iec_octet 34560000000000000', function () {
   const result = byteSize(34560000000000000, { units: 'iec_octet' })
   a.equal(result.value, '30.7')
   a.equal(result.unit, 'Pio')
 })
-tom.test('iec_octet 34560000000000000000', function () {
+test.set('iec_octet 34560000000000000000', function () {
   const result = byteSize(34560000000000000000, { units: 'iec_octet' })
   a.equal(result.value, '30')
   a.equal(result.unit, 'Eio')
 })
-tom.test('iec_octet 34560000000000000000000', function () {
+test.set('iec_octet 34560000000000000000000', function () {
   const result = byteSize(34560000000000000000000, { units: 'iec_octet' })
   a.equal(result.value, '29.3')
   a.equal(result.unit, 'Zio')
 })
-tom.test('iec_octet 34560000000000000000000000', function () {
+test.set('iec_octet 34560000000000000000000000', function () {
   const result = byteSize(34560000000000000000000000, { units: 'iec_octet' })
   a.equal(result.value, '28.6')
   a.equal(result.unit, 'Yio')
 })
-tom.test('iec_octet 34560000000000000000000000000', function () {
+test.set('iec_octet 34560000000000000000000000000', function () {
   const result = byteSize(34560000000000000000000000000, { units: 'iec_octet' })
   a.equal(result.value, '3.456e+28')
   a.equal(result.unit, '')
 })
-tom.test('iec_octet -34560000000000000000000000000', function () {
+test.set('iec_octet -34560000000000000000000000000', function () {
   const result = byteSize(-34560000000000000000000000000, { units: 'iec_octet' })
   a.equal(result.value, '-3.456e+28')
   a.equal(result.unit, '')
 })
 
-tom.test('precision in a range where from=0 - ignore precision', function () {
+test.set('precision in a range where from=0 - ignore precision', function () {
   const result = byteSize(10)
   a.equal(result.value, '10')
   a.equal(result.unit, 'B')
 })
-tom.test('precision in a range where from=0 - ignore precision 2', function () {
+test.set('precision in a range where from=0 - ignore precision 2', function () {
   const result = byteSize(10, { precision: 0 })
   a.equal(result.value, '10')
   a.equal(result.unit, 'B')
 })
-tom.test('precision in a range where from=0 - ignore precision 3', function () {
+test.set('precision in a range where from=0 - ignore precision 3', function () {
   const result = byteSize(10, { precision: 1 })
   a.equal(result.value, '10')
   a.equal(result.unit, 'B')
 })
 
-tom.test('precision', function () {
+test.set('precision', function () {
   const result = byteSize(1500, { precision: 0 })
   a.equal(result.value, '2')
   a.equal(result.unit, 'kB')
 })
-tom.test('precision 2', function () {
+test.set('precision 2', function () {
   const result = byteSize(1500, { precision: 2 })
   a.equal(result.value, '1.5')
   a.equal(result.unit, 'kB')
 })
-tom.test('precision 3', function () {
+test.set('precision 3', function () {
   const result = byteSize(-1500, { precision: 2 })
   a.equal(result.value, '-1.5')
   a.equal(result.unit, 'kB')
 })
-tom.test('precision 4', function () {
+test.set('precision 4', function () {
   const result = byteSize(1500000, { precision: 5 })
   a.equal(result.value, '1.5')
   a.equal(result.unit, 'MB')
 })
 
-tom.test('toString 1', function () {
+test.set('toString 1', function () {
   const result = byteSize(1000).toString()
   a.equal(result, '1 kB')
 })
-tom.test('toString 2', function () {
+test.set('toString 2', function () {
   const result = byteSize(-1000).toString()
   a.equal(result, '-1 kB')
 })
 
-tom.test('use custom table 1', function () {
+test.set('use custom table 1', function () {
   const customUnits = {
     test: [
       { from: 0   , to: 1e3 , unit: '' },
@@ -330,7 +328,7 @@ tom.test('use custom table 1', function () {
   a.equal(result.unit, '')
 })
 
-tom.test('use custom table 2', function () {
+test.set('use custom table 2', function () {
   const customUnits = {
     test: [
       { from: 0   , to: 1e3 , unit: '' },
@@ -344,7 +342,7 @@ tom.test('use custom table 2', function () {
   a.equal(result.unit, 'K')
 })
 
-tom.test('custom table - no unit value specified, use default', function () {
+test.set('custom table - no unit value specified, use default', function () {
   const customUnits = {
     test: [
       { from: 0   , to: 1e3 , unit: '' },
@@ -358,14 +356,14 @@ tom.test('custom table - no unit value specified, use default', function () {
   a.equal(result.unit, 'B')
 })
 
-tom.test('invalid units', function () {
+test.set('invalid units', function () {
   a.throws(
     () => byteSize(10, { units: 'broken' }),
     /invalid units/i
   )
 })
 
-tom.test('options.toStringFn', async function () {
+test.set('options.toStringFn', async function () {
   const result = byteSize(2500, {
     toStringFn: function () { return 'test' }
   })
@@ -373,7 +371,7 @@ tom.test('options.toStringFn', async function () {
   a.equal(str, 'test')
 })
 
-tom.test('byteSize.defaultOptions', async function () {
+test.set('byteSize.defaultOptions', async function () {
   const defaultOptions = {
     toStringFn: function () { return 'test' },
     customUnits: {
@@ -391,7 +389,7 @@ tom.test('byteSize.defaultOptions', async function () {
   byteSize.defaultOptions({})
 })
 
-tom.test('byteSize.defaultOptions - override default units', async function () {
+test.set('byteSize.defaultOptions - override default units', async function () {
   const defaultOptions = {
     toStringFn: function () { return 'test' },
     customUnits: {
@@ -409,7 +407,7 @@ tom.test('byteSize.defaultOptions - override default units', async function () {
   byteSize.defaultOptions({})
 })
 
-tom.test('options.locale: metric 1000', function () {
+test.set('options.locale: metric 1000', function () {
   const result = byteSize(1000, { locale: 'de-DE' })
   a.equal(result.unit, 'kB')
 
@@ -423,7 +421,7 @@ tom.test('options.locale: metric 1000', function () {
   return result.value
 })
 
-tom.test('options.locale with precision 2', function () {
+test.set('options.locale with precision 2', function () {
   const result = byteSize(1500, { locale: 'de-DE', precision: 2 })
   a.equal(result.unit, 'kB')
 
@@ -437,10 +435,10 @@ tom.test('options.locale with precision 2', function () {
   return result.value
 })
 
-tom.test('small number with precision', function () {
+test.set('small number with precision', function () {
   const result = byteSize(15.123456789, { precision: 3 })
   a.equal(result.value, '15.123')
   a.equal(result.unit, 'B')
 })
 
-export default tom
+export { test, only, skip }
