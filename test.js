@@ -441,4 +441,30 @@ test.set('small number with precision', function () {
   a.equal(result.unit, 'B')
 })
 
+test.set('rounding up to the boundary of the next unit - metric kB/MB', function () {
+  const result = byteSize(999951)
+  a.equal(result.value, '1')
+  a.equal(result.unit, 'MB')
+})
+test.set('rounding up to the boundary of the next unit - metric GB/TB', function () {
+  const result = byteSize(999999999951)
+  a.equal(result.value, '1')
+  a.equal(result.unit, 'TB')
+})
+test.set('rounding up to the boundary of the next unit - metric bytes/kB', function () {
+  const result = byteSize(999.96)
+  a.equal(result.value, '1')
+  a.equal(result.unit, 'kB')
+})
+test.set('rounding up to the boundary of the next unit - iec KiB/MiB', function () {
+  const result = byteSize(1048530.24, { units: 'iec' })
+  a.equal(result.value, '1')
+  a.equal(result.unit, 'MiB')
+})
+test.set('rounding up to the boundary of the next unit - does not bump when still below it', function () {
+  const result = byteSize(999.96, { units: 'iec' })
+  a.equal(result.value, '1,000')
+  a.equal(result.unit, 'B')
+})
+
 export { test, only, skip }

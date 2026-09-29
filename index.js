@@ -67,16 +67,26 @@ class ByteSize {
     bytes = Math.abs(bytes)
     const table = referenceTables[options.units]
     if (table) {
-      const units = table.find(u => bytes >= u.from && bytes < u.to)
-      if (units) {
+      const unitIndex = table.findIndex(u => bytes >= u.from && bytes < u.to)
+      if (unitIndex !== -1) {
         const defaultFormat = new Intl.NumberFormat(options.locale, {
           style: 'decimal',
           maximumFractionDigits: options.precision
         })
-        const value = units.from === 0
-          ? prefix + defaultFormat.format(bytes)
-          : prefix + defaultFormat.format(bytes / units.from)
-        this.value = value
+        let units = table[unitIndex]
+        let ratio = units.from === 0 ? bytes : bytes / units.from
+
+        /* Rounding to `options.precision` decimal places can push the displayed
+         * value up to (or past) the boundary of the next unit, e.g. 999951 bytes
+         * becomes '1000 kB' instead of rolling over into '1 MB'. Detect that and
+         * bump to the next unit in the table when it happens. */
+        const boundary = units.from === 0 ? units.to : units.to / units.from
+        if (unitIndex + 1 < table.length && Number(ratio.toFixed(options.precision)) >= boundary) {
+          units = table[unitIndex + 1]
+          ratio = bytes / units.from
+        }
+
+        this.value = prefix + defaultFormat.format(ratio)
         this.unit = units.unit
         this.long = units.long
       } else {
