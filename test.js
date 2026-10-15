@@ -59,7 +59,7 @@ test.set('metric 34560000000000000000000000', function () {
   a.equal(result.value, '34.6')
   a.equal(result.unit, 'YB')
 })
-test.set('metric 34560000000000000000000000000', function () {
+test.set('metric 34560000000000000000000000000: out of range, no reference table unit found', function () {
   const result = byteSize(34560000000000000000000000000)
   a.equal(result.value, '3.456e+28')
   a.equal(result.unit, '')
@@ -439,6 +439,34 @@ test.set('small number with precision', function () {
   const result = byteSize(15.123456789, { precision: 3 })
   a.equal(result.value, '15.123')
   a.equal(result.unit, 'B')
+})
+
+test.set('handle scenario where input value is rounded up into the range above', function () {
+  const result = byteSize(999.96, { precision: 1 })
+  const string = result.toString()
+  a.deepEqual(Object.assign({}, result), { value: '1', unit: 'kB', long: 'kilobytes' })
+  a.equal(string, '1 kB')
+})
+
+test.set('handle scenario where input value is rounded up into the range above 2', function () {
+  const result = byteSize(999951, { precision: 1 })
+  const string = result.toString()
+  a.deepEqual(Object.assign({}, result), { value: '1', unit: 'MB', long: 'megabytes' })
+  a.equal(string, '1 MB')
+})
+
+test.set('handle scenario where input value is rounded up into the range above 3', function () {
+  const result = byteSize(999999999951, { precision: 1 })
+  const string = result.toString()
+  a.deepEqual(Object.assign({}, result), { value: '1', unit: 'TB', long: 'terabytes' })
+  a.equal(string, '1 TB')
+})
+
+test.set('handle scenario where input value is rounded up into the range above 4', function () {
+  const result = byteSize(1048530.24, { precision: 1, units: 'iec' })
+  const string = result.toString()
+  a.deepEqual(Object.assign({}, result), { value: '1', unit: 'MiB', long: 'mebibytes' })
+  a.equal(string, '1 MiB')
 })
 
 export { test, only, skip }

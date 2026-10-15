@@ -52,6 +52,11 @@ const referenceTables = {
   ]
 }
 
+function roundDecimal (value, precision) {
+  const multiplier = Math.pow(10, precision)
+  return Math.round(value * multiplier) / multiplier
+}
+
 class ByteSize {
   constructor (bytes, options) {
     options = Object.assign({
@@ -62,12 +67,27 @@ class ByteSize {
     _options.set(this, options)
 
     Object.assign(referenceTables, options.customUnits)
-
     const prefix = bytes < 0 ? '-' : ''
     bytes = Math.abs(bytes)
     const table = referenceTables[options.units]
     if (table) {
-      const units = table.find(u => bytes >= u.from && bytes < u.to)
+      /* It's necessary to lookup the unit range twice since rounding a unit value near the range boundary can push the value up into a separate range */
+      let units, roundedBytes
+      const units1 = table.find(u => bytes >= u.from && bytes < u.to)
+      if (units1) {
+        if (units1.from === 0) {
+          const roundedUnitValue = roundDecimal(bytes, options.precision)
+          roundedBytes = roundedUnitValue
+        } else {
+          const roundedUnitValue = roundDecimal(bytes / units1.from, options.precision)
+          roundedBytes = roundedUnitValue * units1.from
+        }
+        const units2 = table.find(u => roundedBytes >= u.from && roundedBytes < u.to)
+        units = units2
+      } else {
+        units = null
+      }
+
       if (units) {
         const defaultFormat = new Intl.NumberFormat(options.locale, {
           style: 'decimal',
