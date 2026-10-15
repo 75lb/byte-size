@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * @module byte-size
- */
-
 let defaultOptions = {};
 const _options = new WeakMap();
 
