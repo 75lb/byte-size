@@ -1,10 +1,10 @@
-## byte-size
+## byte-size <mark title="PACKAGE">Package</mark>
 
-* [byte-size](#module_byte-size) <sup><mark title="PACKAGE">Package</mark></sup>
-    * [`byteSize (bytes, [options])`](#exp_module_byte-size--byteSize) : `object` <sup><mark>Default Export</mark></sup>
-        * [`.defaultOptions(options)`](#module_byte-size--byteSize.defaultOptions)
+* [byte-size](#module_byte-size) <mark>Package</mark>
+    * [`byteSize (bytes: number, options?: object)`](#exp_module_byte-size--byteSize) : `object` <sup title="Default Export">⏏</sup> <mark>Default Export</mark>
+        * [`.defaultOptions (options)`](#module_byte-size--byteSize.defaultOptions)
 
-### byteSize(bytes, [options]) ⇒ <code>object</code> ⏏
+### `byteSize (bytes, [options])` ⇒ `object` <sup title="Default Export">⏏</sup> <mark>Default Export</mark>
 Returns an object with the spec `{ value: string, unit: string, long: string }`. The returned object defines a `toString` method meaning it can be used in any string context.
 
 **Kind**: Exported function  
@@ -19,12 +19,9 @@ Returns an object with the spec `{ value: string, unit: string, long: string }`.
 | [options.toStringFn] | <code>function</code> | A `toString` function to override the default. |
 | [options.locale] | <code>string</code> \| <code>Array.&lt;string&gt;</code> | *Node >=13 or modern browser only - on earlier platforms this option is ignored*. The locale to use for number formatting (e.g. `'de-DE'`). Defaults to your system locale. Passed directed into [Intl.NumberFormat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat). |
 
-<a name="module_byte-size--byteSize.defaultOptions"></a>
+#### `byteSize.defaultOptions (options)`
 
-#### byteSize.defaultOptions(options)
 Set the default `byteSize` options for the duration of the process.
-
-**Kind**: static method of [<code>byteSize</code>](#exp_module_byte-size--byteSize)  
 
 | Param | Type | Description |
 | --- | --- | --- |
