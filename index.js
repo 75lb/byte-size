@@ -67,7 +67,7 @@ class ByteSize {
     bytes = Math.abs(bytes)
     const table = referenceTables[options.units]
     if (table) {
-      /* It's necessary to lookup the unit range twice since rounding a unit value near the range boundary can push the value up into a separate range */
+      /* It's necessary to lookup the unit range twice since it's possible to round the input value up into the range above */
       let units, roundedBytes
       const units1 = table.find(u => bytes >= u.from && bytes < u.to)
       if (units1) {

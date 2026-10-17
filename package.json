@@ -8,7 +8,10 @@
     "url": "git+https://github.com/75lb/byte-size.git"
   },
   "type": "module",
-  "exports": "./index.js",
+  "exports": {
+    "import": "./index.js",
+    "require": "./dist/index.cjs"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=12.17"
@@ -28,9 +31,10 @@
     "IEC"
   ],
   "scripts": {
-    "test": "npm run test:ci",
+    "test": "npm run dist && npm run test:ci",
     "test:ci": "75lb-nature test-runner test.js test.cjs",
-    "docs": "75lb-nature jsdoc2md -t README.hbs index.js > README.md"
+    "docs": "75lb-nature jsdoc2md -t README.hbs index.js > README.md",
+    "dist": "75lb-nature cjs-build index.js"
   },
   "devDependencies": {},
   "standard": {

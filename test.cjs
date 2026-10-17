@@ -1,4 +1,4 @@
-const byteSize = require('byte-size').default
+const byteSize = require('byte-size')
 const a = require('assert').strict
 
 const [test, only, skip] = [new Map(), new Map(), new Map()]
