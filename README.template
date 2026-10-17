@@ -170,7 +170,7 @@ import byteSize from 'byte-size'
 Node.js (CommonJS):
 
 ```js
-const byteSize = require('byte-size').default
+const byteSize = require('byte-size')
 ```
 
 Within a modern browser ECMAScript Module:

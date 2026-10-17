@@ -1,3 +1,9 @@
+/*~
+byte-size <mark>Package</mark>
+
+Data
+  id: byte-size
+*/
 let defaultOptions = {}
 const _options = new WeakMap()
 
@@ -111,26 +117,43 @@ class ByteSize {
   }
 }
 
-/**
- * Returns an object with the spec `{ value: string, unit: string, long: string }`. The returned object defines a `toString` method meaning it can be used in any string context.
- * @param {number} - The bytes value to convert.
- * @param [options] {object} - Optional config.
- * @param [options.precision] {number} - Number of decimal places. Defaults to `1`.
- * @param [options.units] {string} - Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. Defaults to `metric`.
- * @param [options.customUnits] {object} - An object containing one or more custom unit lookup tables.
- * @param [options.toStringFn] {function} - A `toString` function to override the default.
- * @param [options.locale] {string|string[]} - *Node >=13 or modern browser only - on earlier platforms this option is ignored*. The locale to use for number formatting (e.g. `'de-DE'`). Defaults to your system locale. Passed directed into [Intl.NumberFormat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).
- * @returns {object}
- * @alias module:byte-size
- */
+/*~
+`byteSize (bytes, [options])` ⇒ `object` <mark>Default Export</mark>
+
+Returns an object with the spec `{ value: string, unit: string, long: string }`. The returned object defines a `toString` method meaning it can be used in any string context.
+
+**Kind**: Exported function
+**Returns**: `object`
+
+Params
+  bytes {number} - The bytes value to convert.
+  [options] {object} - Optional config.
+  [options.precision] {number} - Number of decimal places. Defaults to `1`.
+  [options.units] {string} - Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. Defaults to `metric`.
+  [options.customUnits] {object} - An object containing one or more custom unit lookup tables.
+  [options.toStringFn] {function} - A `toString` function to override the default.
+  [options.locale] {string|string[]} - *Node >=13 or modern browser only - on earlier platforms this option is ignored*. The locale to use for number formatting (e.g. `'de-DE'`). Defaults to your system locale. Passed directed into [Intl.NumberFormat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).
+
+Data
+  id: byteSize
+  parent: byte-size
+*/
 function byteSize (bytes, options) {
   return new ByteSize(bytes, options)
 }
 
-/**
- * Set the default `byteSize` options for the duration of the process.
- * @param options {object} - A `byteSize` options object.
- */
+/*~
+`byteSize.defaultOptions (options)`
+
+Set the default `byteSize` options for the duration of the process.
+
+Params
+  options {object} - A `byteSize` options object.
+
+Data
+  id: defaultOptions
+  parent: byteSize
+*/
 byteSize.defaultOptions = function (options) {
   defaultOptions = options
 }
