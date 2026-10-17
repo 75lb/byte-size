@@ -150,6 +150,8 @@ Returns an object with the spec `{ value: string, unit: string, long: string }`.
 
 Set the default `byteSize` options for the duration of the process.
 
+**Kind**: Property of the `byteSize` function
+
 | Param | Type | Description |
 | --- | --- | --- |
 | options | <code>object</code> | A `byteSize` options object. |
@@ -159,28 +161,22 @@ Set the default `byteSize` options for the duration of the process.
 
 This library is compatible with Node.js, the Web and any style of module loader. It can be loaded anywhere, natively without transpilation.
 
-Node.js (CommonJS):
-
-```js
-const byteSize = require('byte-size')
-```
-
 Node.js (ECMAScript Module):
 
 ```js
 import byteSize from 'byte-size'
 ```
 
+Node.js (CommonJS):
+
+```js
+const byteSize = require('byte-size').default
+```
+
 Within a modern browser ECMAScript Module:
 
 ```js
 import byteSize from './node_modules/byte-size/index.js'
-```
-
-Browser global (adds `window.byteSize`):
-
-```html
-<script src="./node_modules/byte-size/dist/index.js"></script>
 ```
 
 * * *
