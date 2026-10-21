@@ -8,9 +8,9 @@
 
 # byte-size
 
-An isomorphic, load-anywhere function to convert a bytes value (e.g. `3456`) to a human-readable string (`'3.5 kB'`). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte) (summarised below) or specify your own custom units.
+An isomorphic, load-anywhere function to convert a bytes value (e.g. `3456`) to a human-readable string (`'3.5 kB'`). Choose either [metric or IEC, decimal or octet units](https://en.wikipedia.org/wiki/Gigabyte) (summarised below) or specify your own custom units.
 
-Value  | Metric        | Metric (octet) |
+Value  | Metric (decimal) | Metric (octet) |
 -----  | ------------- | -------------- |
 1000   | kB  kilobyte  | ko  kilooctet  |
 1000^2 | MB  megabyte  | Mo  megaoctet  |
@@ -21,7 +21,7 @@ Value  | Metric        | Metric (octet) |
 1000^7 | ZB  zettabyte | Zo  zettaoctet |
 1000^8 | YB  yottabyte | Yo  yottaoctet |
 
-Value  | IEC          | IEC (octet)   |
+Value  | IEC (decimal) | IEC (octet)   |
 ------ | ------------ | ------------- |
 1024   | KiB kibibyte | Kio kibioctet |
 1024^2 | MiB mebibyte | Mio mebioctet |
@@ -125,57 +125,20 @@ Override the built-in defaults for the duration of the process by passing an opt
 '2.40k, 16.40k, 3.99m'
 ```
 
-<a name="module_byte-size"></a>
-
-## byte-size
-
-* [byte-size](#module_byte-size)
-    * [byteSize(bytes, [options])](#exp_module_byte-size--byteSize) ⇒ <code>object</code> ⏏
-        * [.defaultOptions(options)](#module_byte-size--byteSize.defaultOptions)
-
-<a name="exp_module_byte-size--byteSize"></a>
-
-### byteSize(bytes, [options]) ⇒ <code>object</code> ⏏
-Returns an object with the spec `{ value: string, unit: string, long: string }`. The returned object defines a `toString` method meaning it can be used in any string context.
-
-**Kind**: Exported function  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| bytes | <code>number</code> | The bytes value to convert. |
-| [options] | <code>object</code> | Optional config. |
-| [options.precision] | <code>number</code> | Number of decimal places. Defaults to `1`. |
-| [options.units] | <code>string</code> | Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. Defaults to `metric`. |
-| [options.customUnits] | <code>object</code> | An object containing one or more custom unit lookup tables. |
-| [options.toStringFn] | <code>function</code> | A `toString` function to override the default. |
-| [options.locale] | <code>string</code> \| <code>Array.&lt;string&gt;</code> | *Node >=13 or modern browser only - on earlier platforms this option is ignored*. The locale to use for number formatting (e.g. `'de-DE'`). Defaults to your system locale. Passed directed into [Intl.NumberFormat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat). |
-
-<a name="module_byte-size--byteSize.defaultOptions"></a>
-
-#### byteSize.defaultOptions(options)
-Set the default `byteSize` options for the duration of the process.
-
-**Kind**: static method of [<code>byteSize</code>](#exp_module_byte-size--byteSize)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>object</code> | A `byteSize` options object. |
-
-
 ## Load anywhere
 
 This library is compatible with Node.js, the Web and any style of module loader. It can be loaded anywhere, natively without transpilation.
-
-Node.js (CommonJS):
-
-```js
-const byteSize = require('byte-size')
-```
 
 Node.js (ECMAScript Module):
 
 ```js
 import byteSize from 'byte-size'
+```
+
+Node.js (CommonJS):
+
+```js
+const byteSize = require('byte-size')
 ```
 
 Within a modern browser ECMAScript Module:
@@ -184,12 +147,63 @@ Within a modern browser ECMAScript Module:
 import byteSize from './node_modules/byte-size/index.js'
 ```
 
-Browser global (adds `window.byteSize`):
+# API Reference
 
-```html
-<script src="./node_modules/byte-size/dist/index.js"></script>
-```
+<a id="api-byte-size"></a>
+
+- [byte-size](#api-byte-size) <sup><mark>Package</mark></sup>
+  - [`byteSize (bytes, [options])` ⇒ `object`](#api-byteSize) <sup><mark>Function, Default Export</mark></sup>
+    - [`byteSize.defaultOptions (options)`](#api-defaultOptions) <sup><mark>Function</mark></sup>
+
+## byte-size
+
+Isomorphic function to convert a bytes value (e.g. 3456) to a human-readable string ('3.5 kB').
+
+**Type**: Package  
+**Dependencies**: None  
+**Supported engines**: 
+- Node.js >= v12.17
+- deno >= 2
+- modern browsers
+
+
+
+<a id="api-byteSize"></a>
+
+### `byteSize (bytes, [options])` ⇒ `object`
+
+Returns an object with the spec `{ value: string, unit: string, long: string }`. The returned object defines a `toString` method meaning it can be used in any string context.
+
+**Type**: Function, Default Export  
+**Returns**: `object`
+
+**Params**
+
+Param                 | Type             | Description
+---                   | ---              | ---
+bytes                 | number           | The bytes value to convert.
+[options]             | object           | Optional config.
+[options.precision]   | number           | Number of decimal places. Defaults to `1`.
+[options.units]       | string           | Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. Defaults to `metric`.
+[options.customUnits] | object           | An object containing one or more custom unit lookup tables.
+[options.toStringFn]  | function         | A `toString` function to override the default.
+[options.locale]      | string\|string[] | *Node >=13 or modern browser only - on earlier platforms this option is ignored*. The locale to use for number formatting (e.g. `'de-DE'`). Defaults to your system locale. Passed directly into [Intl.NumberFormat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).
+
+<a id="api-defaultOptions"></a>
+
+#### `byteSize.defaultOptions (options)`
+
+Set the default `byteSize` options for the duration of the process.
+
+**Type**: Function
+
+**Params**
+
+Param                 | Type             | Description
+---                   | ---              | ---
+options               | object           | A `byteSize` options object.
 
 * * *
 
 &copy; 2014-26 [Lloyd Brookes](https://github.com/75lb) \<opensource@75lb.com\>.
+

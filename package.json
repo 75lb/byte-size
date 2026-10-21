@@ -32,7 +32,7 @@
   ],
   "scripts": {
     "test": "npm run dist && npm run test:ci",
-    "test:ci": "75lb-nature test-runner test*.js",
+    "test:ci": "75lb-nature test-runner test/*.js test/*.cjs",
     "docs": "75lb-nature jsdoc2md -t README.hbs index.js > README.md",
     "dist": "75lb-nature cjs-build index.js"
   },

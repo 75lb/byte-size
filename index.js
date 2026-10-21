@@ -1,6 +1,17 @@
-/**
- * @module byte-size
- */
+/*~
+byte-size
+
+Isomorphic function to convert a bytes value (e.g. 3456) to a human-readable string ('3.5 kB').
+
+Data
+  id: byte-size
+  codeType: Package
+  dependencies: None
+  supported:
+  - Node.js >= v12.17
+  - deno >= 2
+  - modern browsers
+*/
 
 let defaultOptions = {}
 const _options = new WeakMap()
@@ -71,7 +82,7 @@ class ByteSize {
     bytes = Math.abs(bytes)
     const table = referenceTables[options.units]
     if (table) {
-      /* It's necessary to lookup the unit range twice since rounding a unit value near the range boundary can push the value up into a separate range */
+      /* It's necessary to lookup the unit range twice since it's possible to round the input value up into the range above */
       let units, roundedBytes
       const units1 = table.find(u => bytes >= u.from && bytes < u.to)
       if (units1) {
@@ -115,26 +126,47 @@ class ByteSize {
   }
 }
 
-/**
- * Returns an object with the spec `{ value: string, unit: string, long: string }`. The returned object defines a `toString` method meaning it can be used in any string context.
- * @param {number} - The bytes value to convert.
- * @param [options] {object} - Optional config.
- * @param [options.precision] {number} - Number of decimal places. Defaults to `1`.
- * @param [options.units] {string} - Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. Defaults to `metric`.
- * @param [options.customUnits] {object} - An object containing one or more custom unit lookup tables.
- * @param [options.toStringFn] {function} - A `toString` function to override the default.
- * @param [options.locale] {string|string[]} - *Node >=13 or modern browser only - on earlier platforms this option is ignored*. The locale to use for number formatting (e.g. `'de-DE'`). Defaults to your system locale. Passed directed into [Intl.NumberFormat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).
- * @returns {object}
- * @alias module:byte-size
- */
+/*~
+`byteSize (bytes, [options])` ⇒ `object`
+
+Returns an object with the spec `{ value: string, unit: string, long: string }`. The returned object defines a `toString` method meaning it can be used in any string context.
+
+Params
+  Param                 | Type             | Description
+  ---                   | ---              | ---
+  bytes                 | number           | The bytes value to convert.
+  [options]             | object           | Optional config.
+  [options.precision]   | number           | Number of decimal places. Defaults to `1`.
+  [options.units]       | string           | Specify `'metric'`, `'iec'`, `'metric_octet'`, `'iec_octet'` or the name of a property from the custom units table in `options.customUnits`. Defaults to `metric`.
+  [options.customUnits] | object           | An object containing one or more custom unit lookup tables.
+  [options.toStringFn]  | function         | A `toString` function to override the default.
+  [options.locale]      | string\|string[] | *Node >=13 or modern browser only - on earlier platforms this option is ignored*. The locale to use for number formatting (e.g. `'de-DE'`). Defaults to your system locale. Passed directly into [Intl.NumberFormat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).
+
+Data
+  id: byteSize
+  parent: byte-size
+  codeType: Function, Default Export
+  returns: object
+*/
 function byteSize (bytes, options) {
   return new ByteSize(bytes, options)
 }
 
-/**
- * Set the default `byteSize` options for the duration of the process.
- * @param options {object} - A `byteSize` options object.
- */
+/*~
+`byteSize.defaultOptions (options)`
+
+Set the default `byteSize` options for the duration of the process.
+
+Params
+  Param                 | Type             | Description
+  ---                   | ---              | ---
+  options               | object           | A `byteSize` options object.
+
+Data
+  id: defaultOptions
+  parent: byteSize
+  codeType: Function
+*/
 byteSize.defaultOptions = function (options) {
   defaultOptions = options
 }

@@ -8,9 +8,9 @@
 
 # byte-size
 
-An isomorphic, load-anywhere function to convert a bytes value (e.g. `3456`) to a human-readable string (`'3.5 kB'`). Choose between [metric or IEC units](https://en.wikipedia.org/wiki/Gigabyte) (summarised below) or specify your own custom units.
+An isomorphic, load-anywhere function to convert a bytes value (e.g. \`3456\`) to a human-readable string (\`'3.5 kB'\`). Choose either [metric or IEC, decimal or octet units](https://en.wikipedia.org/wiki/Gigabyte) (summarised below) or specify your own custom units.
 
-Value  | Metric        | Metric (octet) |
+Value  | Metric (decimal) | Metric (octet) |
 -----  | ------------- | -------------- |
 1000   | kB  kilobyte  | ko  kilooctet  |
 1000^2 | MB  megabyte  | Mo  megaoctet  |
@@ -21,7 +21,7 @@ Value  | Metric        | Metric (octet) |
 1000^7 | ZB  zettabyte | Zo  zettaoctet |
 1000^8 | YB  yottabyte | Yo  yottaoctet |
 
-Value  | IEC          | IEC (octet)   |
+Value  | IEC (decimal) | IEC (octet)   |
 ------ | ------------ | ------------- |
 1024   | KiB kibibyte | Kio kibioctet |
 1024^2 | MiB mebibyte | Mio mebioctet |
@@ -34,36 +34,36 @@ Value  | IEC          | IEC (octet)   |
 
 ## Synopsis
 
-By default, `byteSize` converts the input number to a human readable string with metric units and a precision of 1.
+By default, \`byteSize\` converts the input number to a human readable string with metric units and a precision of 1.
 
-```js
+\`\`\`js
 > const byteSize = require('byte-size')
 
 > byteSize(1580)
 { value: '1.6', unit: 'kB', long: 'kilobytes' }
-```
+\`\`\`
 
-The object returned by `byteSize` defines a `toString` method therefore can be used directly in string context.
+The object returned by \`byteSize\` defines a \`toString\` method therefore can be used directly in string context.
 
-```js
-> `Filesize: ${byteSize(12400)}`
+\`\`\`js
+> \`Filesize: \${byteSize(12400)}\`
 'Filesize: 12.4 kB'
-```
+\`\`\`
 
-Override the default `toString` behaviour by setting [`options.toStringFn`](#bytesizebytes-options--object-).
+Override the default \`toString\` behaviour by setting [\`options.toStringFn\`](#bytesizebytes-options--object-).
 
-```js
+\`\`\`js
 > function toStringFn () {
-  return `**${this.value}${this.unit}**`
+  return \`**\${this.value}\${this.unit}**\`
 }
 
-> `Filesize: ${byteSize(12400, { toStringFn })}`
+> \`Filesize: \${byteSize(12400, { toStringFn })}\`
 'Filesize: **12.4kB**'
-```
+\`\`\`
 
-Beside the default of `metric`, there are three other built-in units available: `metric_octet`, `iec` and `iec_octet`.
+Beside the default of \`metric\`, there are three other built-in units available: \`metric_octet\`, \`iec\` and \`iec_octet\`.
 
-```js
+\`\`\`js
 > byteSize(1580, { units: 'iec' })
 { value: '1.5', unit: 'KiB', long: 'kibibytes' }
 
@@ -72,21 +72,21 @@ Beside the default of `metric`, there are three other built-in units available: 
 
 > byteSize(1580, { units: 'metric_octet' })
 { value: '1.6', unit: 'ko', long: 'kilooctets' }
-```
+\`\`\`
 
-You can adjust the `precision`.
+You can adjust the \`precision\`.
 
-```js
+\`\`\`js
 > byteSize(1580, { units: 'iec', precision: 3 })
 { value: '1.543', unit: 'KiB', long: 'kibibytes' }
 
 > byteSize(1580, { units: 'iec', precision: 0 })
 { value: '2', unit: 'KiB', long: 'kibibytes' }
-```
+\`\`\`
 
-Define custom units by passing an object containing one or more additional conversion tables to `options.customUnits`. In `options.units`, specify the name of a property from the `customUnits` object.
+Define custom units by passing an object containing one or more additional conversion tables to \`options.customUnits\`. In \`options.units\`, specify the name of a property from the \`customUnits\` object.
 
-```js
+\`\`\`js
 > const customUnits = {
   simple: [
     { from: 0   , to: 1e3 , unit: ''  },
@@ -98,13 +98,13 @@ Define custom units by passing an object containing one or more additional conve
 
 > const { value, unit } = byteSize(10000, { customUnits, units: 'simple' })
 
-> `${value}${unit}`
+> \`\${value}\${unit}\`
 '10.0K'
-```
+\`\`\`
 
-Override the built-in defaults for the duration of the process by passing an options object to `byteSize.defaultOptions()`. This results in cleaner code in cases where `byteSize` is used often with the same options.
+Override the built-in defaults for the duration of the process by passing an options object to \`byteSize.defaultOptions()\`. This results in cleaner code in cases where \`byteSize\` is used often with the same options.
 
-```js
+\`\`\`js
 > byteSize.defaultOptions({
   units: 'simple',
   precision: 2,
@@ -123,38 +123,34 @@ Override the built-in defaults for the duration of the process by passing an opt
 
 > [2400, 16400, 3991200].map(byteSize).join(', ')
 '2.40k, 16.40k, 3.99m'
-```
-
-{{>main}}
+\`\`\`
 
 ## Load anywhere
 
 This library is compatible with Node.js, the Web and any style of module loader. It can be loaded anywhere, natively without transpilation.
 
-Node.js (CommonJS):
-
-```js
-const byteSize = require('byte-size')
-```
-
 Node.js (ECMAScript Module):
 
-```js
+\`\`\`js
 import byteSize from 'byte-size'
-```
+\`\`\`
+
+Node.js (CommonJS):
+
+\`\`\`js
+const byteSize = require('byte-size')
+\`\`\`
 
 Within a modern browser ECMAScript Module:
 
-```js
+\`\`\`js
 import byteSize from './node_modules/byte-size/index.js'
-```
+\`\`\`
 
-Browser global (adds `window.byteSize`):
+# API Reference
 
-```html
-<script src="./node_modules/byte-size/dist/index.js"></script>
-```
+${data.body}
 
 * * *
 
-&copy; 2014-26 [Lloyd Brookes](https://github.com/75lb) \<opensource@75lb.com\>.
+&copy; 2014-26 [Lloyd Brookes](https://github.com/75lb) \\<opensource@75lb.com\\>.

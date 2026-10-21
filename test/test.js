@@ -1,5 +1,5 @@
 import byteSize from 'byte-size'
-import { strict as a } from 'assert'
+import { strict as a } from 'node:assert'
 
 const [test, only, skip] = [new Map(), new Map(), new Map()]
 const isNode13Plus = Number(process.versions.node.split('.')[0]) >= 13
